@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>scriPT — Pavan Teja | Interactive Diary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Cinzel:wght@600;700;800;900&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS & THEMES
+   ============================================================ */
+:root {
+  --grain: url("data:image/png;base64,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");
+  --gold:         #c9a84c;
+  --gold-lt:      #ecd794;
+  --gold-dk:      #916e28;
+  --gold-glow:    rgba(201, 168, 76, 0.35);
+  --serif:        'DM Serif Display', Georgia, serif;
+  --cinzel:       'Cinzel', Georgia, serif;
+  --sans:         'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ease-page:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.45, 0.64, 1);
+}
+
+/* DARK MODE */
+[data-theme="dark"] {
+  --bg:             #060606;
+  --bg-desk:        radial-gradient(ellipse at 50% 45%, #161411 0%, #060606 100%);
+  --nav-bg:         rgba(6, 6, 6, 0.9);
+  --border:         rgba(201, 168, 76, 0.18);
+  --text:           #eee8dc;
+  --text-dim:       rgba(238, 232, 220, 0.68);
+  --muted:          #857d72;
+  --cover-leather:  linear-gradient(145deg, #221c15 0%, #110e0a 100%);
+  --cover-border:   #c9a84c;
+  --page-bg-l:      linear-gradient(90deg, #161411 0%, #1d1a15 92%, #12100d 100%);
+  --page-bg-r:      linear-gradient(90deg, #12100d 0%, #1d1a15 8%, #161411 100%);
+  --page-edge:      #0b0a08;
+  --gutter:         linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  --book-shadow:    0 35px 90px -15px rgba(0,0,0,0.95), 0 0 0 1px rgba(201,168,76,0.18);
+  --card-bg:        #14120e;
+  --glass:          rgba(22, 19, 15, 0.75);
+  --orb1:           rgba(201, 168, 76, 0.14);
+  --orb2:           rgba(145, 110, 40, 0.08);
+  --modal-bg:       rgba(5, 5, 5, 0.94);
+}
+
+/* LIGHT MODE */
+[data-theme="light"] {
+  --bg:             #f5f0e6;
+  --bg-desk:        radial-gradient(ellipse at 50% 45%, #ebe2d0 0%, #dad0bb 100%);
+  --nav-bg:         rgba(245, 240, 230, 0.92);
+  --border:         rgba(145, 110, 40, 0.22);
+  --text:           #1b1610;
+  --text-dim:       rgba(27, 22, 16, 0.72);
+  --muted:          #7d7264;
+  --cover-leather:  linear-gradient(145deg, #422817 0%, #29180c 100%);
+  --cover-border:   #e2b860;
+  --page-bg-l:      linear-gradient(90deg, #faf6ee 0%, #fffdf8 92%, #e3dac6 100%);
+  --page-bg-r:      linear-gradient(90deg, #e3dac6 0%, #fffdf8 8%, #faf6ee 100%);
+  --page-edge:      #cfc3ab;
+  --gutter:         linear-gradient(90deg, rgba(60,40,15,0.3) 0%, rgba(60,40,15,0) 100%);
+  --book-shadow:    0 30px 75px -15px rgba(70,45,15,0.35), 0 0 0 1px rgba(145,110,40,0.25);
+  --card-bg:        #eae3d2;
+  --glass:          rgba(255, 252, 245, 0.88);
+  --orb1:           rgba(201, 168, 76, 0.2);
+  --orb2:           rgba(180, 140, 60, 0.14);
+  --modal-bg:       rgba(242, 237, 227, 0.95);
+}
+
+/* ============================================================
+   RESET & FOUNDATIONS
+   ============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; background: none; border: none; cursor: pointer; color: inherit; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold-dk); border-radius: 3px; }
+::selection { background: var(--gold); color: #000; }
+
+/* Noise overlay */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: var(--grain);
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 clamp(20px, 4.5vw, 64px); height: 68px;
+  background: transparent; border-bottom: 1px solid transparent;
+  transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+nav.scrolled {
+  background: var(--nav-bg);
+  border-color: var(--border);
+}
+
+.nav-logo {
+  font-family: var(--serif); font-size: 1.45rem; font-weight: 400;
+  letter-spacing: -0.01em; cursor: pointer; display: flex; align-items: baseline;
+}
+.nav-logo .pt {
+  color: var(--gold); font-weight: 700; position: relative;
+  text-shadow: 0 0 12px var(--gold-glow);
+}
+.nav-logo .pt::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav-logo:hover .pt::after { transform: scaleX(1); }
+
+.nav-right { display: flex; align-items: center; gap: clamp(18px, 3vw, 36px); }
+
+.nav-links {
+  display: flex; gap: clamp(16px, 2.5vw, 32px);
+  list-style: none; font-size: 0.8rem; letter-spacing: 0.1em;
+  text-transform: uppercase; font-weight: 500;
+}
+.nav-links a {
+  color: var(--muted); position: relative; padding-bottom: 2px;
+  transition: color 0.25s ease;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 1px;
+  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* Theme toggle */
+.theme-toggle-btn {
+  width: 44px; height: 24px; border-radius: 12px;
+  border: 1.5px solid var(--border); background: var(--card-bg);
+  position: relative; cursor: pointer; outline: none;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.theme-toggle-thumb {
+  position: absolute; top: 50%; left: 3px; transform: translateY(-50%);
+  width: 16px; height: 16px; border-radius: 50%; background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; transition: left 0.3s var(--ease-spring);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+[data-theme="light"] .theme-toggle-thumb { left: calc(100% - 19px); }
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+#hero {
+  position: relative; min-height: 94vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+  padding: 100px clamp(20px, 6vw, 80px) 60px;
+}
+.hero-ambient {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+}
+.hero-orb {
+  position: absolute; border-radius: 50%;
+  animation: floatOrb 18s ease-in-out infinite alternate;
+}
+.hero-orb-1 {
+  width: clamp(280px, 45vw, 600px); height: clamp(280px, 45vw, 600px);
+  background: radial-gradient(circle, var(--orb1) 0%, transparent 70%);
+  top: -15%; left: -10%;
+}
+.hero-orb-2 {
+  width: clamp(220px, 35vw, 500px); height: clamp(220px, 35vw, 500px);
+  background: radial-gradient(circle, var(--orb2) 0%, transparent 70%);
+  bottom: -15%; right: -5%; animation-delay: -6s;
+}
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, 40px) scale(1.08); }
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid var(--border);
+  padding: 6px 16px; border-radius: 30px; margin-bottom: 18px;
+  background: var(--glass);
+}
+.hero-badge::before { content: '✦'; font-size: 0.65rem; color: var(--gold); }
+
+.hero-brand {
+  font-family: var(--serif); font-size: clamp(4.8rem, 14vw, 13rem);
+  font-weight: 400; line-height: 0.88; letter-spacing: -0.035em;
+  margin-bottom: 20px;
+}
+.hero-brand .scri { color: var(--text); }
+.hero-brand .pt-box {
+  color: var(--gold); display: inline-block; position: relative;
+}
+.hero-brand .pt-box::after {
+  content: 'PT'; position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.7) 50%, transparent 80%);
+  background-size: 200%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+@keyframes ptShine {
+  0%, 100% { background-position: -200% center; }
+  50% { background-position: 200% center; }
+}
+
+.hero-brand .pt-glow-line {
+  position: absolute; bottom: 4px; left: 0; right: 0; height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold-dk), var(--gold-lt), var(--gold-dk));
+  box-shadow: 0 0 20px var(--gold-glow);
+  animation: linePulse 2.8s ease-in-out infinite alternate;
+}
+@keyframes linePulse {
+  0% { opacity: 0.5; transform: scaleX(0.85); }
+  100% { opacity: 1; transform: scaleX(1); }
+}
+
+.hero-subtitle {
+  font-family: var(--sans); font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-weight: 300; font-style: italic; color: var(--text-dim);
+  max-width: 600px; margin: 0 auto 16px; line-height: 1.5;
+}
+
+.hero-author-tag {
+  font-size: 0.78rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 34px;
+}
+.author-p, .author-t {
+  display: inline-block; color: var(--gold); font-weight: 700;
+  animation: letterHop 3.2s ease-in-out infinite;
+}
+.author-t { animation-delay: 2.1s; }
+@keyframes letterHop {
+  0%, 75%, 100% { transform: translateY(0); color: var(--gold); }
+  10% { transform: translateY(-6px); color: var(--gold-lt); text-shadow: 0 0 10px var(--gold-glow); }
+  20% { transform: translateY(0); }
+}
+
+.hero-actions {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gold); color: #080706; font-weight: 600;
+  font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 14px 30px; border-radius: 3px;
+  border: 1px solid var(--gold); transition: all 0.3s ease;
+  box-shadow: 0 10px 28px rgba(201, 168, 76, 0.28);
+}
+.btn-primary:hover {
+  background: var(--gold-lt); transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(201, 168, 76, 0.4);
+}
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent; color: var(--text); font-weight: 500;
+  font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: 3px;
+  border: 1px solid var(--border); transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+  border-color: var(--gold); color: var(--gold); transform: translateY(-2px);
+}
+
+.hero-scroll-cue {
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); cursor: pointer; transition: color 0.3s;
+}
+.hero-scroll-cue:hover { color: var(--gold); }
+.scroll-indicator-bar {
+  width: 1px; height: 34px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollBarDrop 2.2s infinite;
+}
+@keyframes scrollBarDrop {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  50.1% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ============================================================
+   REALISTIC DIARY + PER-NOVEL THEMED STAGE
+   ============================================================ */
+.book-section {
+  position: relative;
+  height: calc(100vh + 10 * 28vh);
+  background: var(--bg);
+  --stage-accent: #e6c566;
+  --stage-glow: rgba(230, 197, 102, 0.35);
+}
+
+.book-sticky-stage {
+  position: sticky; top: 0; left: 0; width: 100%; height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; padding: 75px 20px 24px;
+}
+
+/* ---------- THEMED BACKGROUND LAYERS ---------- */
+.stage-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.stage-bg::after { /* light-mode wash */
+  content: ''; position: absolute; inset: 0; z-index: 9;
+  background: rgba(247, 242, 232, 0); transition: background 0.5s ease;
+}
+[data-theme="light"] .stage-bg::after { background: rgba(247, 242, 232, 0.6); }
+.stage-bg::before { /* vignette + desk darkening */
+  content: ''; position: absolute; inset: 0; z-index: 8;
+  background: radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(0,0,0,0.55) 100%);
+}
+.bg-layer { position: absolute; inset: 0; opacity: 0; transition: opacity 1.1s ease; overflow: hidden; }
+.bg-layer.on { opacity: 1; }
+.bg-layer > div { position: absolute; }
+.bg-layer .bl-1 { inset: 0; }
+.bg-layer .bl-2, .bg-layer .bl-3, .bg-layer .bl-4 { inset: 0; }
+
+/* All motion below uses transform/opacity only (GPU-composited, no repaints). */
+@keyframes drift   { 0% { transform: translate3d(0,0,0) scale(1); } 100% { transform: translate3d(5%,4%,0) scale(1.12); } }
+@keyframes driftR  { 0% { transform: translate3d(0,0,0) scale(1.05); } 100% { transform: translate3d(-6%,-3%,0) scale(1); } }
+@keyframes riseUp  { 0% { transform: translate3d(0,12%,0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translate3d(0,-30%,0); opacity: 0; } }
+@keyframes tile90  { to { transform: translate3d(0,-90px,0); } }
+@keyframes tile120 { to { transform: translate3d(0,-120px,0); } }
+@keyframes sweepX  { 0% { transform: translate3d(-40%,0,0); } 100% { transform: translate3d(40%,0,0); } }
+@keyframes sweepY  { 0% { transform: translate3d(0,-120%,0); } 100% { transform: translate3d(0,420%,0); } }
+@keyframes pulseGlow { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+@keyframes ringOut { 0% { transform: scale(.4); opacity: .9; } 100% { transform: scale(1.6); opacity: 0; } }
+@keyframes spinSlow { to { transform: rotate(360deg); } }
+
+.bg-layer > div, .bg-layer > div::before, .bg-layer > div::after { will-change: auto; }
+.bg-layer .bl-2, .bg-layer .bl-3, .bg-layer .bl-4 { will-change: transform, opacity; }
+
+/* 0 — GOLD (cover / welcome / back cover) */
+.th-gold .bl-1 { background: radial-gradient(ellipse at 50% 40%, #1d1912 0%, #060606 78%); }
+.th-gold .bl-2 { background: radial-gradient(circle at 18% 22%, rgba(201,168,76,.22), transparent 38%); animation: drift 16s ease-in-out infinite alternate; }
+.th-gold .bl-3 { background: radial-gradient(circle at 82% 82%, rgba(145,110,40,.24), transparent 40%); animation: driftR 20s ease-in-out infinite alternate; }
+.th-gold .bl-4 { inset: 0 0 -90px 0; background-image: radial-gradient(circle, rgba(236,215,148,.18) 1px, transparent 1.6px); background-size: 90px 90px; animation: tile90 12s linear infinite; }
+
+/* 1 — INDEX : chai-stall amber */
+.th-index .bl-1 { background: linear-gradient(165deg, #2c170a 0%, #140a05 58%, #060302 100%); }
+.th-index .bl-2 { background: radial-gradient(ellipse at 50% 112%, rgba(224,126,32,.5), transparent 58%); animation: pulseGlow 6s ease-in-out infinite; }
+.th-index .bl-3 { background:
+    radial-gradient(ellipse 130px 240px at 24% 100%, rgba(255,230,190,.16), transparent 70%),
+    radial-gradient(ellipse 160px 280px at 52% 100%, rgba(255,230,190,.12), transparent 70%),
+    radial-gradient(ellipse 140px 260px at 78% 100%, rgba(255,230,190,.15), transparent 70%);
+  animation: riseUp 9s ease-in-out infinite; }
+.th-index .bl-4 { background:
+    radial-gradient(circle 18px at 12% 30%, rgba(255,190,90,.3), transparent 70%),
+    radial-gradient(circle 26px at 86% 24%, rgba(255,170,70,.26), transparent 70%),
+    radial-gradient(circle 14px at 70% 70%, rgba(255,210,120,.3), transparent 70%),
+    radial-gradient(circle 22px at 30% 78%, rgba(255,170,70,.24), transparent 70%),
+    radial-gradient(circle 12px at 48% 16%, rgba(255,220,150,.34), transparent 70%);
+  animation: drift 12s ease-in-out infinite alternate; }
+
+/* 2 — NAINA : crimson, charcoal, railway at dusk */
+.th-naina .bl-1 { background: linear-gradient(180deg, #08080b 0%, #170a0f 52%, #34090f 100%); }
+.th-naina .bl-2 { background: radial-gradient(ellipse at 50% 108%, rgba(214,24,44,.45), transparent 55%); animation: pulseGlow 5s ease-in-out infinite; }
+.th-naina .bl-3 { inset: auto -25% -12% -25%; height: 62%; transform-origin: 50% 100%; transform: perspective(430px) rotateX(62deg);
+  background:
+    repeating-linear-gradient(0deg, rgba(150,110,100,.34) 0 7px, transparent 7px 46px),
+    linear-gradient(90deg, transparent 38%, rgba(220,210,210,.38) 38.4% 39.6%, transparent 40% 60%, rgba(220,210,210,.38) 60.4% 61.6%, transparent 62%);
+  -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 88%); mask-image: linear-gradient(to top, #000 10%, transparent 88%); }
+.th-naina .bl-4 { background:
+    radial-gradient(circle at 50% 64%, rgba(255,226,206,.55), transparent 9%),
+    linear-gradient(115deg, transparent 42%, rgba(255,80,90,.09) 50%, transparent 58%);
+  animation: pulseGlow 3.2s ease-in-out infinite; }
+
+/* 3 — MIRAZ : cyan cyber-mirror */
+.th-miraz .bl-1 { background: linear-gradient(135deg, #02070b 0%, #062730 58%, #03121a 100%); }
+.th-miraz .bl-2 { background-image:
+    linear-gradient(rgba(60,230,240,.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(60,230,240,.14) 1px, transparent 1px);
+  background-size: 52px 52px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 15%, transparent 72%); mask-image: radial-gradient(ellipse at 50% 50%, #000 15%, transparent 72%); }
+.th-miraz .bl-3 { height: 26%; inset: 0 0 auto 0; background: linear-gradient(180deg, transparent, rgba(70,240,250,.2), transparent); animation: sweepY 6s linear infinite; }
+.th-miraz .bl-4 { inset: -10% -40%; background: linear-gradient(115deg, transparent 42%, rgba(170,250,255,.14) 50%, transparent 58%); animation: sweepX 8s ease-in-out infinite alternate; }
+
+/* 4 — VYSHU : rose cinema spotlight + film reels */
+.th-vyshu .bl-1 { background: radial-gradient(ellipse at 50% 0%, #511030 0%, #1c0713 56%, #07030a 100%); }
+.th-vyshu .bl-2 { inset: -10% 10% auto 10%; height: 110%;
+  background:
+    conic-gradient(from 197deg at 18% 0%, rgba(255,150,200,.26) 0deg, transparent 22deg),
+    conic-gradient(from 141deg at 82% 0%, rgba(255,120,170,.22) 0deg, transparent 22deg);
+  animation: pulseGlow 7s ease-in-out infinite; }
+.th-vyshu .bl-3::before, .th-vyshu .bl-3::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 30px;
+  background: repeating-linear-gradient(180deg, rgba(255,160,205,.26) 0 18px, transparent 18px 38px); border-radius: 3px; }
+.th-vyshu .bl-3::before { left: 4%; } .th-vyshu .bl-3::after { right: 4%; }
+.th-vyshu .bl-4 { background: radial-gradient(ellipse at 50% 100%, rgba(255,70,140,.32), transparent 56%); animation: pulseGlow 5s ease-in-out infinite; }
+
+/* 5 — ANONYMOUS : noir green, blinds, fog, "?" */
+.th-anonymous .bl-1 { background: linear-gradient(180deg, #030504 0%, #0a1b14 58%, #030706 100%); }
+.th-anonymous .bl-2 { background: repeating-linear-gradient(172deg, rgba(120,235,175,.11) 0 38px, transparent 38px 90px);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 85%); mask-image: linear-gradient(90deg, #000 0%, transparent 85%); }
+.th-anonymous .bl-3 { background:
+    radial-gradient(ellipse 40% 24% at 20% 80%, rgba(110,200,160,.14), transparent 70%),
+    radial-gradient(ellipse 46% 26% at 75% 70%, rgba(110,200,160,.1), transparent 70%);
+  animation: drift 18s ease-in-out infinite alternate; }
+.th-anonymous .bl-4::before { content: '?'; position: absolute; right: 5%; top: 6%; font-family: var(--serif);
+  font-size: 62vh; line-height: 1; color: rgba(90,215,150,.07); }
+.th-anonymous .bl-4 { animation: pulseGlow 6s ease-in-out infinite; }
+
+/* 6 — SUNGEETHA : forest trek, sunrise, mountains, mist */
+.th-sungeetha .bl-1 { background: linear-gradient(180deg, #07130e 0%, #12301c 42%, #7a5416 76%, #1b1409 100%); }
+.th-sungeetha .bl-2 { background: radial-gradient(circle at 50% 70%, rgba(255,196,86,.52), transparent 34%); animation: pulseGlow 7s ease-in-out infinite; }
+.th-sungeetha .bl-3 { inset: auto 0 0 0; height: 44%; background: #0e2415;
+  clip-path: polygon(0 62%, 12% 30%, 24% 58%, 38% 18%, 52% 52%, 66% 26%, 80% 56%, 92% 34%, 100% 52%, 100% 100%, 0 100%); opacity: .95; }
+.th-sungeetha .bl-4 { inset: auto 0 0 0; height: 30%; background: #07120a;
+  clip-path: polygon(0 56%, 16% 26%, 30% 60%, 46% 30%, 60% 66%, 76% 36%, 90% 62%, 100% 44%, 100% 100%, 0 100%); }
+
+/* 7 — DMR : saffron divine rays on deep indigo */
+.th-dmr .bl-1 { background: radial-gradient(circle at 50% 46%, #632408 0%, #1d0d22 56%, #070410 100%); }
+.th-dmr .bl-2 { inset: -40%;
+  background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,160,50,.17) 0 5deg, transparent 5deg 15deg);
+  -webkit-mask-image: radial-gradient(circle, #000 5%, transparent 62%); mask-image: radial-gradient(circle, #000 5%, transparent 62%);
+  animation: spinSlow 140s linear infinite; }
+.th-dmr .bl-3 { background: radial-gradient(circle at 50% 46%, rgba(255,190,90,.35), transparent 28%); animation: pulseGlow 5s ease-in-out infinite; }
+.th-dmr .bl-4 { inset: 0 0 -120px 0; background-image: radial-gradient(circle, rgba(255,200,110,.22) 1.2px, transparent 2px); background-size: 120px 120px; animation: tile120 14s linear infinite; }
+
+/* 8 — HAATHI : electric blue / orange sci-fi */
+.th-haathi .bl-1 { background: linear-gradient(160deg, #030712 0%, #0a1a3d 55%, #1d0e05 100%); }
+.th-haathi .bl-2 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 2 L54 17 L54 47 L28 62 L2 47 L2 17 Z M28 62 L28 95' fill='none' stroke='%2360a5ff' stroke-opacity='.2' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-size: 56px 97px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 10%, transparent 70%); mask-image: radial-gradient(ellipse at 50% 50%, #000 10%, transparent 70%); }
+.th-haathi .bl-3::before, .th-haathi .bl-3::after {
+  content: ''; position: absolute; left: 50%; top: 50%; width: 70vmin; height: 70vmin; margin: -35vmin 0 0 -35vmin;
+  border-radius: 50%; border: 2px solid rgba(255,140,40,.4); animation: ringOut 5s ease-out infinite; }
+.th-haathi .bl-3::after { animation-delay: 2.5s; }
+.th-haathi .bl-4 { background:
+    radial-gradient(circle at 88% 92%, rgba(255,130,30,.34), transparent 38%),
+    radial-gradient(circle at 10% 8%, rgba(60,140,255,.3), transparent 40%);
+  animation: pulseGlow 6s ease-in-out infinite; }
+
+/* Pause everything that is not on screen / not the active theme */
+.bg-layer:not(.on) { visibility: hidden; transition: opacity 1.1s ease, visibility 0s linear 1.1s; }
+.bg-layer:not(.on) *, .bg-layer:not(.on) *::before, .bg-layer:not(.on) *::after { animation-play-state: paused !important; }
+.offscreen .stage-bg *, .offscreen .stage-bg *::before, .offscreen .stage-bg *::after { animation-play-state: paused !important; }
+#hero.offscreen *, #hero.offscreen *::before, #hero.offscreen *::after { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; } }
+
+
+/* ---------- STAGE HUD ---------- */
+.stage-hud {
+  position: absolute; top: 78px; left: clamp(20px, 5vw, 64px); right: clamp(20px, 5vw, 64px);
+  display: flex; align-items: center; justify-content: space-between;
+  z-index: 10; pointer-events: none;
+}
+.stage-title {
+  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--stage-accent); display: flex; align-items: center; gap: 8px; font-weight: 600;
+  transition: color 0.6s ease;
+}
+.stage-title::before { content: '◆'; font-size: 0.6rem; color: var(--stage-accent); }
+[data-theme="light"] .stage-title { color: #4a3510; }
+.stage-counter { font-family: var(--serif); font-size: 1.15rem; color: var(--text-dim); }
+.stage-counter strong { color: var(--stage-accent); font-size: 1.45rem; transition: color 0.6s ease; }
+[data-theme="light"] .stage-counter strong { color: #4a3510; }
+
+/* ---------- DIARY ---------- */
+.book-viewport {
+  position: relative; z-index: 5;
+  width: 100%; max-width: 1140px; height: clamp(520px, 72vh, 660px);
+  perspective: 2600px; perspective-origin: 50% 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.the-book {
+  --ink: #2b2013; --ink-dim: rgba(43, 32, 19, 0.8); --ink-muted: #8a7a62;
+  --pg-line: rgba(110, 80, 40, 0.3);
+  --paper-a: #e8dcbf; --paper-b: #f5ecd5;
+  position: relative; height: 100%; width: min(100%, 1120px);
+  transform-style: preserve-3d;
+  transition: transform 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+}
+[data-theme="light"] .the-book { --paper-a: #efe5ca; --paper-b: #fbf5e4; }
+.the-book.is-closed { transform: translateX(-25%); }
+
+/* leather back board (the diary body) */
+.leather-shell {
+  position: absolute; top: 0; bottom: 0; left: 0; right: 0; border-radius: 10px;
+  background: var(--cover-leather);
+  box-shadow: var(--book-shadow), inset 0 0 0 1px rgba(0,0,0,0.5), inset 0 2px 3px rgba(255,255,255,0.06);
+  transition: left 0.85s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.85s ease;
+}
+.leather-shell::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; opacity: 0.5; 
+  background-image: var(--grain);
+}
+/* stitching around the inner edge of the leather */
+.leather-shell::before {
+  content: ''; position: absolute; inset: 4px; border-radius: 7px; z-index: 1;
+  border: 1.5px dashed rgba(226, 184, 96, 0.28);
+}
+.the-book.is-closed .leather-shell { left: 50%; border-radius: 3px 10px 10px 3px; }
+
+/* pages inset inside the leather */
+.spread-base-grid {
+  position: absolute; top: 11px; bottom: 11px; left: 16px; right: 16px;
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.page-slot { position: relative; height: 100%; min-width: 0; }
+.page-slot-l { transition: opacity 0.3s ease 0.55s; }
+.the-book.is-closed .page-slot-l { opacity: 0; transition-delay: 0s; }
+
+/* page-block thickness (stacked paper edges) */
+.edge-stack {
+  position: absolute; top: 12px; bottom: 12px; width: 9px; z-index: 0;
+  background: repeating-linear-gradient(90deg, #f1e7cf 0 1px, #bfb293 1px 2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.45);
+}
+.edge-stack-l { left: 8px; border-radius: 3px 0 0 3px; transition: opacity 0.3s ease 0.55s; }
+.edge-stack-r { right: 8px; border-radius: 0 3px 3px 0; }
+.the-book.is-closed .edge-stack-l { opacity: 0; transition-delay: 0s; }
+
+/* Center crease */
+.book-spine-ridge {
+  position: absolute; top: 11px; bottom: 11px; left: 50%; width: 10px; margin-left: -5px;
+  z-index: 3; pointer-events: none; opacity: 0; transition: opacity 0.4s ease 0.5s;
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.38) 50%, rgba(0,0,0,0) 100%);
+}
+.the-book.is-open .book-spine-ridge { opacity: 1; }
+
+/* Ribbon bookmark hanging out of the bottom */
+.book-ribbon {
+  position: absolute; bottom: -30px; left: calc(50% + 34px); width: 13px; height: 58px; z-index: 0;
+  background: linear-gradient(180deg, #8c1a1a 0%, #c02c2c 60%, #7a1515 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+  box-shadow: 2px 6px 12px rgba(0,0,0,0.5);
+  opacity: 0; transition: opacity 0.4s ease 0.5s;
+}
+.the-book.is-open .book-ribbon { opacity: 1; }
+
+/* ---------- PAPER ---------- */
+.page-sheet {
+  position: relative; height: 100%; width: 100%;
+  overflow: hidden; padding: clamp(22px, 3.4vw, 42px);
+  display: flex; flex-direction: column;
+  color: var(--ink);
+  background-color: var(--paper-b);
+  background-image:
+    var(--grain),
+    radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.55), transparent 55%),
+    linear-gradient(180deg, var(--paper-b), var(--paper-a));
+}
+.page-sheet.left-sheet {
+  border-radius: 4px 0 0 4px;
+  background-image:
+    linear-gradient(270deg, rgba(60,40,15,0.42) 0%, rgba(60,40,15,0.12) 7%, transparent 16%),
+    repeating-linear-gradient(180deg, transparent 0 27px, rgba(90,120,170,0.15) 27px 28px),
+    var(--grain),
+    linear-gradient(180deg, var(--paper-b), var(--paper-a));
+  background-position: 0 0, 0 14px, 0 0, 0 0;
+}
+.page-sheet.right-sheet {
+  border-radius: 0 4px 4px 0;
+  background-image:
+    linear-gradient(90deg, rgba(60,40,15,0.42) 0%, rgba(60,40,15,0.12) 7%, transparent 16%),
+    var(--grain),
+    linear-gradient(180deg, var(--paper-b), var(--paper-a));
+}
+.page-inner-border {
+  position: absolute; inset: 12px; pointer-events: none;
+  border: 1px solid var(--pg-line); border-radius: 2px;
+}
+.page-sheet.left-sheet .page-inner-border { right: 10px; }
+.page-sheet.right-sheet .page-inner-border { left: 10px; }
+.page-body { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.page-sheet.left-sheet .page-body { padding-right: 6px; }
+.page-sheet.right-sheet .page-body { padding-left: 6px; }
+
+.page-bottom-strip {
+  position: relative; display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-muted); border-top: 1px solid var(--pg-line);
+  padding-top: 8px; margin-top: 8px;
+}
+.page-sheet.left-sheet .page-bottom-strip { margin-right: 6px; }
+.page-sheet.right-sheet .page-bottom-strip { margin-left: 6px; }
+.page-folio-num { font-family: var(--serif); font-size: 0.9rem; color: var(--pg-accent, #94701f); }
+
+/* ---------- FLIPPING LEAF ---------- */
+.flipping-leaf {
+  position: absolute; top: 0; bottom: 0; left: 50%; right: 0;
+  transform-style: preserve-3d; will-change: transform;
+  transform-origin: 0% 50%;
+  transform: translateZ(1px) rotateY(0deg);
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1),
+              top 0.85s ease, bottom 0.85s ease, right 0.85s ease;
+}
+.the-book.is-open .flipping-leaf { top: 11px; bottom: 11px; right: 16px; }
+
+.leaf-face {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden;
+}
+.leaf-face-front { transform: rotateY(0deg); border-radius: 0 6px 6px 0; }
+.leaf-face-back  { transform: rotateY(-180deg); border-radius: 6px 0 0 6px; }
+.leaf-shadow {
+  position: absolute; inset: 0; pointer-events: none; z-index: 10;
+  background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.05) 55%, rgba(0,0,0,0) 100%);
+  opacity: 0; transition: opacity 0.35s ease;
+}
+
+/* ---------- LEATHER FRONT COVER ---------- */
+.closed-cover-design {
+  position: relative; width: 100%; height: 100%;
+  border-radius: 3px 12px 12px 3px; overflow: hidden;
+  background: var(--cover-leather);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  padding: clamp(30px, 5vw, 56px);
+  box-shadow: inset 7px 0 16px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(0,0,0,0.5), inset -2px 0 5px rgba(255,255,255,0.05);
+}
+.closed-cover-design::before { /* leather grain */
+  content: ''; position: absolute; inset: 0; opacity: 0.55;  pointer-events: none;
+  background-image: var(--grain);
+}
+.cover-stitch { position: absolute; inset: 14px; border: 2px dashed rgba(226,184,96,0.45); border-radius: 3px 8px 8px 3px; pointer-events: none; }
+.cover-foil-frame { position: absolute; inset: 30px; border: 1.5px solid var(--gold); border-radius: 2px; pointer-events: none; box-shadow: 0 0 10px rgba(201,168,76,0.25); }
+.cover-foil-frame::before { content: ''; position: absolute; inset: 4px; border: 1px solid rgba(201,168,76,0.5); }
+.cover-corner { position: absolute; width: 38px; height: 38px; background: linear-gradient(135deg, var(--gold-lt), var(--gold-dk)); box-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+.cover-corner.tl { top: 0; left: 0; clip-path: polygon(0 0, 100% 0, 0 100%); }
+.cover-corner.tr { top: 0; right: 0; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+.cover-corner.bl { bottom: 0; left: 0; clip-path: polygon(0 0, 0 100%, 100% 100%); }
+.cover-corner.br { bottom: 0; right: 0; clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+.cover-band { /* elastic closure band */
+  position: absolute; top: -2px; bottom: -2px; right: 11%; width: 15px; z-index: 2;
+  background: linear-gradient(90deg, #0b0806, #2d251c 50%, #0b0806);
+  box-shadow: -2px 0 6px rgba(0,0,0,0.55), 2px 0 6px rgba(0,0,0,0.55);
+}
+.cover-band::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(180deg, transparent 0 3px, rgba(255,255,255,0.05) 3px 4px); }
+.cover-content { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.cover-crest { font-family: var(--cinzel); font-size: 0.74rem; letter-spacing: 0.34em; color: var(--gold-lt); text-transform: uppercase; opacity: 0.9; }
+.cover-title {
+  font-family: var(--serif); font-size: clamp(3.2rem, 7.6vw, 5.4rem); line-height: 1; margin: 10px 0 2px; letter-spacing: -0.02em;
+  background: linear-gradient(180deg, #f6e3a1 0%, #c9a84c 50%, #8a6420 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 2px 1px rgba(0,0,0,0.7)) drop-shadow(0 0 14px rgba(201,168,76,0.25));
+}
+.cover-rule { width: 130px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 6px 0; position: relative; }
+.cover-rule::after { content: '✦'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -52%); font-size: 0.7rem; color: var(--gold); background: transparent; padding: 0 6px; }
+.cover-by { font-family: var(--cinzel); font-size: 0.95rem; letter-spacing: 0.3em; color: var(--gold-lt); text-transform: uppercase; }
+.cover-sub { font-family: var(--serif); font-style: italic; font-size: 0.98rem; color: rgba(236,215,148,0.75); margin-top: 4px; }
+.cover-open-trigger-btn {
+  margin-top: 26px; display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(180deg, var(--gold-lt), var(--gold)); color: #1a1208; font-weight: 700;
+  font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 12px 26px; border-radius: 3px; cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.5);
+  transition: all 0.25s ease;
+}
+.cover-open-trigger-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.55), 0 0 18px rgba(201,168,76,0.4); }
+
+/* ---------- PAGE: WELCOME (handwritten) ---------- */
+.hand { font-family: 'Caveat', 'Segoe Script', cursive; }
+.wl-exlibris { font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--pg-accent); font-weight: 700; margin-bottom: 6px; }
+.wl-title { font-family: 'Caveat', cursive; font-size: clamp(2.6rem, 4.6vw, 3.8rem); line-height: 0.95; color: var(--ink); transform: rotate(-1.5deg); margin: 4px 0 2px; }
+.wl-title span { color: var(--pg-accent); }
+.wl-by { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--ink-dim); margin-bottom: 14px; }
+.wl-msg { font-family: 'Caveat', cursive; font-size: clamp(1.25rem, 1.75vw, 1.5rem); line-height: 28px; color: #2a2f5a; }
+.wl-msg p { margin-bottom: 14px; }
+.wl-sign { font-family: 'Caveat', cursive; font-size: 2rem; color: var(--pg-accent); transform: rotate(-3deg); margin-top: auto; align-self: flex-end; }
+.wl-stamp {
+  position: absolute; right: 4px; top: 6px; width: 74px; height: 74px; border-radius: 50%;
+  border: 2px double var(--pg-accent); color: var(--pg-accent); opacity: 0.7;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  font-family: var(--cinzel); font-size: 0.52rem; letter-spacing: 0.12em; line-height: 1.3; transform: rotate(14deg);
+}
+.wl-hint { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); margin-top: 6px; }
+
+/* ---------- PAGE: INDEX ---------- */
+.idx-head { margin-bottom: 8px; }
+.idx-kicker { font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--pg-accent); font-weight: 700; }
+.idx-title { font-family: var(--serif); font-size: clamp(2rem, 3.2vw, 2.7rem); line-height: 1.05; color: var(--ink); }
+.idx-sub { font-family: var(--serif); font-style: italic; font-size: 0.92rem; color: var(--ink-dim); }
+.idx-list { display: flex; flex-direction: column; margin-top: 6px; }
+.idx-row {
+  display: flex; align-items: center; gap: 10px; padding: 4px 6px;
+  border-bottom: 1px dotted var(--pg-line); cursor: pointer; transition: background 0.2s ease, transform 0.2s ease;
+  --row: #94701f;
+}
+.idx-row:hover { background: color-mix(in srgb, var(--row) 11%, transparent); transform: translateX(4px); }
+.idx-num { font-family: var(--serif); color: var(--row); width: 24px; font-size: 0.95rem; }
+.idx-thumb { width: 22px; height: 30px; object-fit: cover; border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.35); flex-shrink: 0; }
+.idx-text { flex: 1; min-width: 0; }
+.idx-name { font-family: var(--serif); font-size: 1rem; line-height: 1.1; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.idx-genre { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); }
+.idx-page { font-family: var(--serif); color: var(--ink-dim); font-size: 0.9rem; }
+
+/* ---------- PAGE: NOVEL (left) ---------- */
+.novel-chapter-num {
+  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--pg-accent); font-weight: 700; margin-bottom: 10px;
+}
+.novel-logo-plate {
+  position: relative; align-self: flex-start; display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 22px; margin: 2px 0 14px; border-radius: 5px; max-width: 100%;
+  background: linear-gradient(145deg, #1d1813, #0a0806);
+  border: 1px solid color-mix(in srgb, var(--pg-accent) 70%, #000);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35), 0 0 22px color-mix(in srgb, var(--pg-accent) 35%, transparent);
+  transform: rotate(-1deg);
+}
+.novel-logo-plate::before, .novel-logo-plate::after { /* washi tape */
+  content: ''; position: absolute; top: -9px; width: 46px; height: 16px;
+  background: color-mix(in srgb, var(--pg-accent) 55%, #f3e9cf); opacity: 0.8;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+.novel-logo-plate::before { left: -14px; transform: rotate(-32deg); }
+.novel-logo-plate::after { right: -14px; transform: rotate(32deg); }
+.novel-logo-badge { max-height: 68px; max-width: 100%; width: auto; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+.logo-fallback-title { font-family: var(--serif); font-size: 2rem; color: #f3ead4; line-height: 1.1; }
+.novel-genre-tag {
+  align-self: flex-start; display: inline-block; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--pg-accent);
+  border: 1px solid color-mix(in srgb, var(--pg-accent) 50%, transparent);
+  padding: 3px 10px; border-radius: 2px; margin-bottom: 14px;
+  background: color-mix(in srgb, var(--pg-accent) 9%, transparent);
+}
+.novel-full-description { font-size: clamp(0.88rem, 1.08vw, 1rem); line-height: 28px; color: var(--ink-dim); margin-bottom: 14px; }
+.novel-excerpt-quote {
+  font-family: var(--serif); font-style: italic; font-size: 0.98rem; line-height: 1.55; color: var(--pg-accent);
+  border-left: 2px solid var(--pg-accent); padding-left: 12px; margin-bottom: 14px;
+}
+.novel-cast-row { display: flex; align-items: center; gap: 8px; margin-top: auto; }
+.cast-header-label { font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); }
+.cast-avatar-group { display: flex; align-items: center; }
+.cast-avatar-circle {
+  width: 30px; height: 30px; border-radius: 50%; object-fit: cover;
+  border: 2px solid var(--paper-b); box-shadow: 0 1px 4px rgba(0,0,0,0.4); margin-left: -7px;
+  transition: transform 0.2s ease;
+}
+.cast-avatar-circle:first-child { margin-left: 0; }
+.cast-avatar-circle:hover { transform: scale(1.25) translateY(-3px); z-index: 5; }
+
+/* ---------- PAGE: NOVEL (right) ---------- */
+.novel-right-header-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.trailer-badge-pill { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pg-accent); display: flex; align-items: center; gap: 6px; font-weight: 700; }
+.trailer-badge-pill::before { content: '▶'; font-size: 0.58rem; }
+.trailer-res-tag { font-size: 0.66rem; color: var(--ink-muted); letter-spacing: 0.08em; }
+.novel-video-screen {
+  position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 4px; overflow: hidden;
+  border: 5px solid #fffdf6; outline: 1px solid rgba(0,0,0,0.18); background: #000;
+  box-shadow: 0 10px 22px rgba(60,40,15,0.45); cursor: pointer; margin-bottom: 14px; transform: rotate(-0.6deg);
+}
+.novel-poster-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease, filter 0.6s ease; filter: brightness(0.88); }
+.novel-video-screen:hover .novel-poster-img { transform: scale(1.05); filter: brightness(1); }
+.novel-video-vignette { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.78) 100%); pointer-events: none; }
+.novel-play-icon-btn {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 54px; height: 54px; border-radius: 50%;
+  background: rgba(8,7,6,0.75); border: 2px solid var(--pg-accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 24px color-mix(in srgb, var(--pg-accent) 55%, transparent);
+  transition: all 0.3s var(--ease-spring);
+}
+.novel-play-icon-btn svg { width: 20px; height: 20px; fill: currentColor; margin-left: 3px; }
+.novel-video-screen:hover .novel-play-icon-btn { transform: translate(-50%, -50%) scale(1.15); background: var(--pg-accent); }
+.novel-mini-stamp { position: absolute; bottom: 8px; right: 10px; width: 32px; aspect-ratio: 2/3; border-radius: 2px; overflow: hidden; border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 4px 10px rgba(0,0,0,0.7); }
+.novel-mini-stamp img { width: 100%; height: 100%; object-fit: cover; }
+.novel-video-caption { position: absolute; bottom: 8px; left: 10px; font-size: 0.7rem; letter-spacing: 0.1em; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.9); }
+
+.novel-buy-panel {
+  background: color-mix(in srgb, var(--pg-accent) 7%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--pg-accent) 55%, transparent); border-radius: 4px;
+  padding: 12px clamp(10px, 1.8vw, 16px); margin-bottom: 10px;
+}
+.buy-panel-header { display: flex; align-items: center; justify-content: space-between; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pg-accent); font-weight: 700; margin-bottom: 10px; }
+.buy-buttons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.btn-buy-link {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 10px 12px; border-radius: 2px; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700;
+  cursor: pointer; text-align: center; transition: all 0.25s ease;
+}
+.btn-buy-link.color-link { background: var(--pg-accent); color: #fff; border: 1px solid var(--pg-accent); }
+.btn-buy-link.color-link:hover { transform: translateY(-2px); box-shadow: 0 6px 16px color-mix(in srgb, var(--pg-accent) 45%, transparent); filter: brightness(1.1); }
+.btn-buy-link.bw-link { background: transparent; color: var(--ink); border: 1px solid var(--ink-dim); }
+.btn-buy-link.bw-link:hover { border-color: var(--pg-accent); color: var(--pg-accent); transform: translateY(-2px); }
+.btn-buy-link.disabled-btn { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+.buy-shipping-note { display: flex; align-items: center; justify-content: space-between; font-size: 0.64rem; color: var(--ink-muted); margin-top: 8px; }
+.buy-shipping-note span { display: flex; align-items: center; gap: 4px; }
+
+/* ---------- PAGE: AUTHOR (back page) ---------- */
+.au-polaroid {
+  position: relative; align-self: flex-start; background: #fffdf6; padding: 8px 8px 26px;
+  box-shadow: 0 10px 22px rgba(60,40,15,0.4); transform: rotate(-2.5deg); margin: 6px 0 14px 6px;
+}
+.au-polaroid img { width: clamp(120px, 14vw, 160px); aspect-ratio: 1 / 1.1; object-fit: cover; }
+.au-polaroid::before { content: ''; position: absolute; top: -10px; left: 50%; width: 64px; height: 18px; margin-left: -32px; transform: rotate(3deg);
+  background: color-mix(in srgb, var(--pg-accent) 50%, #f3e9cf); opacity: 0.8; box-shadow: 0 1px 2px rgba(0,0,0,0.25); }
+.au-polaroid span { position: absolute; bottom: 4px; left: 0; right: 0; text-align: center; font-family: 'Caveat', cursive; font-size: 1.15rem; color: #444; }
+.au-head { position: absolute; top: 0; right: 0; max-width: 56%; }
+.au-kicker { font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pg-accent); font-weight: 700; margin-bottom: 4px; }
+.au-name { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.02; color: var(--ink); }
+.au-name span { color: var(--pg-accent); }
+.au-role { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-dim); font-weight: 600; margin-top: 6px; }
+.au-bio { font-size: clamp(0.88rem, 1.05vw, 0.98rem); line-height: 28px; color: var(--ink-dim); }
+.au-stats { display: flex; gap: 22px; padding: 12px 0; border-top: 1px dotted var(--pg-line); border-bottom: 1px dotted var(--pg-line); margin: 6px 0 16px; }
+.au-stat .val { font-family: var(--serif); font-size: 1.9rem; line-height: 1; color: var(--pg-accent); }
+.au-stat .lbl { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); margin-top: 3px; }
+.au-thanks { font-family: 'Caveat', cursive; font-size: clamp(1.6rem, 2.6vw, 2.2rem); line-height: 1.1; color: var(--ink); transform: rotate(-1.5deg); margin-bottom: 8px; }
+.au-thanks span { color: var(--pg-accent); }
+.au-links { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.au-link {
+  display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-radius: 3px;
+  border: 1px solid var(--pg-line); background: rgba(255,255,255,0.35); font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: var(--ink);
+  transition: all 0.25s ease;
+}
+.au-link:hover { background: var(--pg-accent); color: #fff; border-color: var(--pg-accent); transform: translateX(4px); }
+.au-close {
+  margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--pg-accent);
+  border-bottom: 1px solid var(--pg-accent); padding-bottom: 2px;
+}
+
+/* ---------- CONTROLS ---------- */
+.book-arrow-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--glass); border: 1px solid var(--border);
+  color: var(--text); display: flex; align-items: center; justify-content: center;
+  z-index: 60; cursor: pointer; transition: all 0.25s ease;
+}
+.book-arrow-btn:hover { background: var(--stage-accent); color: #000; border-color: var(--stage-accent); transform: translateY(-50%) scale(1.08); box-shadow: 0 0 20px var(--stage-glow); }
+.book-arrow-btn.prev-btn { left: clamp(-14px, -2vw, -24px); }
+.book-arrow-btn.next-btn { right: clamp(-14px, -2vw, -24px); }
+.book-arrow-btn svg { width: 17px; height: 17px; fill: currentColor; }
+.book-arrow-btn:disabled { opacity: 0.2; cursor: not-allowed; pointer-events: none; }
+
+.book-tabs-ribbon {
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 60; padding: 6px 14px; border-radius: 40px;
+  background: var(--glass); border: 1px solid var(--border);
+  max-width: 94vw; overflow-x: auto; scrollbar-width: none;
+}
+.book-tabs-ribbon::-webkit-scrollbar { display: none; }
+.tab-pill {
+  padding: 5px 12px; border-radius: 20px; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); font-weight: 500; cursor: pointer; white-space: nowrap; transition: all 0.25s ease;
+}
+.tab-pill:hover { color: var(--stage-accent); }
+.tab-pill.active { background: var(--stage-accent); color: #080706; font-weight: 700; box-shadow: 0 2px 12px var(--stage-glow); }
+
+
+/* ---------- DIARY REALISM: spiral rings, punched holes, back cover ---------- */
+.spiral {
+  position: absolute; top: 11px; bottom: 11px; left: 50%; width: 34px; margin-left: -17px; z-index: 4;
+  pointer-events: none; opacity: 0; transition: opacity 0.4s ease 0.5s;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='30'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23f7f9fb'/%3E%3Cstop offset='.5' stop-color='%239aa0a8'/%3E%3Cstop offset='1' stop-color='%23454a52'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='3' y='11' width='28' height='10' rx='5' fill='none' stroke='rgba(0,0,0,.4)' stroke-width='4'/%3E%3Crect x='3' y='9' width='28' height='10' rx='5' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3C/svg%3E") repeat-y;
+  transform: translateZ(3px);
+}
+.the-book.is-open .spiral { opacity: 1; }
+.book-spine-ridge { display: none; }
+
+/* punched holes along the gutter of every page */
+.page-sheet::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 24px; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='30'%3E%3Ccircle cx='12' cy='14' r='5' fill='%23241608' fill-opacity='.85'/%3E%3Ccircle cx='12' cy='15' r='4' fill='%23000' fill-opacity='.35'/%3E%3C/svg%3E") repeat-y;
+}
+.page-sheet.left-sheet::after { right: 0; }
+.page-sheet.right-sheet::after { left: 0; }
+.page-sheet.left-sheet .page-inner-border { right: 30px; }
+.page-sheet.right-sheet .page-inner-border { left: 30px; }
+.page-sheet.left-sheet .page-body { padding-right: 30px; }
+.page-sheet.right-sheet .page-body { padding-left: 30px; }
+.page-sheet.left-sheet .page-bottom-strip { margin-right: 30px; }
+.page-sheet.right-sheet .page-bottom-strip { margin-left: 30px; }
+.page-sheet.left-sheet { padding-right: clamp(20px, 2.4vw, 30px); }
+.page-sheet.right-sheet { padding-left: clamp(20px, 2.4vw, 30px); }
+
+/* three views: closed (front) / open / back (back cover) */
+.page-slot-r { transition: opacity 0.3s ease 0s; }
+.the-book.is-back { transform: translateX(25%); }
+.the-book.is-back .leather-shell { left: 0; right: 50%; border-radius: 10px 3px 3px 10px; }
+.the-book.is-back .page-slot-r, .the-book.is-back .page-slot-l, .the-book.is-back .edge-stack { opacity: 0; transition-delay: 0.6s; }
+.leather-shell { transition: left 0.85s cubic-bezier(0.25, 1, 0.5, 1), right 0.85s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.85s ease; }
+
+/* label sticker on the front cover */
+.cover-label {
+  margin-top: 22px; padding: 8px 22px 9px; background: #f3ead2; color: #2b2013; border-radius: 2px;
+  transform: rotate(-2deg); box-shadow: 0 5px 12px rgba(0,0,0,0.5); border: 1px dashed rgba(90,60,20,0.45);
+  display: flex; flex-direction: column; align-items: center; line-height: 1.1;
+}
+.cover-label small { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: #7d6a4c; }
+.cover-label b { font-family: 'Caveat', 'Segoe Script', cursive; font-weight: 700; font-size: 1.7rem; color: #2a2f5a; }
+
+/* BACK COVER (author information) */
+.closed-cover-design.back { border-radius: 10px 3px 3px 10px;
+  box-shadow: inset -7px 0 16px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(0,0,0,0.5), inset 2px 0 5px rgba(255,255,255,0.05);
+  padding: clamp(26px, 3.4vw, 40px); }
+.closed-cover-design.back .cover-stitch { border-radius: 8px 3px 3px 8px; }
+.cover-band.left { right: auto; left: 8%; }
+.bc { gap: 4px; width: 100%; }
+.bc-portrait { width: 92px; height: 92px; border-radius: 50%; overflow: hidden; border: 2px solid var(--gold); box-shadow: 0 0 0 4px rgba(0,0,0,0.35), 0 8px 18px rgba(0,0,0,0.6); margin: 6px 0 4px; }
+.bc-portrait img { width: 100%; height: 100%; object-fit: cover; }
+.bc-name { font-family: var(--serif); font-size: clamp(1.8rem, 2.8vw, 2.3rem); line-height: 1.05; color: #f3ead4; }
+.bc-name span { color: var(--gold); }
+.bc-role { font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-lt); font-weight: 600; margin-bottom: 4px; }
+.bc-bio { font-size: 0.84rem; line-height: 1.55; color: rgba(243,234,212,0.78); max-width: 340px; font-weight: 300; }
+.bc-stats { display: flex; gap: 26px; margin: 8px 0 6px; padding: 8px 0; border-top: 1px solid rgba(201,168,76,0.3); border-bottom: 1px solid rgba(201,168,76,0.3); }
+.bc-stat .val { font-family: var(--serif); font-size: 1.5rem; color: var(--gold-lt); line-height: 1; }
+.bc-stat .lbl { font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(243,234,212,0.55); margin-top: 2px; }
+.bc-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 4px 0; }
+.bc-links a { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: var(--gold-lt); border: 1px solid rgba(201,168,76,0.5); padding: 7px 12px; border-radius: 2px; transition: all 0.2s ease; }
+.bc-links a:hover { background: var(--gold); color: #1a1208; }
+.bc-again { margin-top: 10px !important; padding: 9px 20px !important; }
+
+/* ============================================================
+   TRAILER VIDEO MODAL
+   ============================================================ */
+.video-modal-backdrop {
+  position: fixed; inset: 0; z-index: 500;
+  background: var(--modal-bg);
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(16px, 4vw, 40px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.video-modal-backdrop.open {
+  opacity: 1; pointer-events: auto;
+}
+.video-modal-container {
+  position: relative; width: 100%; max-width: 900px;
+  background: #000; border-radius: 6px; overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 35px 80px rgba(0,0,0,0.95), 0 0 0 1px rgba(201,168,76,0.3);
+  transform: scale(0.94); transition: transform 0.35s var(--ease-spring);
+}
+.video-modal-backdrop.open .video-modal-container {
+  transform: scale(1);
+}
+.modal-close-btn {
+  position: absolute; top: 14px; right: 14px; z-index: 20;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(0,0,0,0.7); border: 1px solid var(--gold);
+  color: var(--gold); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.2s ease;
+}
+.modal-close-btn:hover { background: var(--gold); color: #000; }
+.modal-close-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+.modal-video-wrapper {
+  position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000;
+}
+.modal-video-wrapper iframe, .modal-video-wrapper video {
+  width: 100%; height: 100%; border: none;
+}
+.modal-footer-bar {
+  padding: 16px 24px; background: var(--card-bg);
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--border); flex-wrap: wrap; gap: 12px;
+}
+.modal-footer-meta h4 {
+  font-family: var(--serif); font-size: 1.25rem; color: var(--text);
+}
+.modal-footer-meta p {
+  font-size: 0.78rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   CONTACT SECTION
+   ============================================================ */
+#contact {
+  position: relative;
+  padding: clamp(80px, 14vh, 150px) clamp(20px, 5vw, 64px);
+  text-align: center; overflow: hidden; background: var(--bg);
+}
+.contact-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+.contact-eyebrow {
+  font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin-bottom: 14px;
+}
+.contact-title {
+  font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+  font-weight: 400; line-height: 1.05; margin-bottom: 18px; color: var(--text);
+}
+.contact-title .pt { color: var(--gold); }
+.contact-desc {
+  font-size: 1.02rem; line-height: 1.7; color: var(--text-dim); margin-bottom: 36px;
+  font-weight: 300;
+}
+.contact-links-grid {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+}
+.contact-card-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px; border-radius: 3px; font-size: 0.8rem;
+  letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500;
+  border: 1.5px solid var(--border); color: var(--text);
+  background: var(--card-bg); transition: all 0.3s ease;
+}
+.contact-card-btn:hover {
+  border-color: var(--gold); color: #000; background: var(--gold);
+  transform: translateY(-3px); box-shadow: 0 10px 24px rgba(201,168,76,0.3);
+}
+.contact-card-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 30px clamp(20px, 5vw, 64px);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; background: var(--bg);
+}
+.footer-brand {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--text);
+}
+.footer-brand .pt { color: var(--gold); font-weight: 700; }
+.footer-note { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
+
+/* ============================================================
+   MOBILE ADAPTIVE
+   ============================================================ */
+@media (max-width: 860px) {
+  .book-section { height: auto; }
+  .book-sticky-stage { position: relative; height: auto; min-height: 100vh; padding: 75px 12px 36px; justify-content: flex-start; }
+  .stage-hud { position: relative; top: auto; left: auto; right: auto; margin-bottom: 14px; width: 100%; }
+  .book-viewport { height: auto; perspective: none; }
+  .the-book { width: 100%; height: auto; transform: none !important; }
+  .leather-shell, .book-spine-ridge, .book-ribbon, .flipping-leaf, .edge-stack { display: none !important; }
+  .spread-base-grid { position: relative; inset: auto; display: flex; flex-direction: column; gap: 14px; }
+  .page-slot { height: auto; transition: none; }
+  .page-slot:empty { display: none; }
+  .page-slot-l, .the-book.is-closed .page-slot-l { opacity: 1; }
+  .page-sheet { height: auto; min-height: 460px; border-radius: 6px !important; box-shadow: 0 14px 30px rgba(0,0,0,0.45); padding: 26px 20px; }
+  .closed-cover-design { min-height: 520px; border-radius: 10px; }
+  .au-head { position: static; max-width: 100%; margin-bottom: 10px; }
+  .book-arrow-btn { display: none; }
+  .book-tabs-ribbon { position: static; transform: none; margin-top: 20px; width: 100%; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="main-nav" aria-label="Main navigation">
+  <div class="nav-logo" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    scri<span class="pt">PT</span>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#book">The Diary</a></li>
+      <li><a href="javascript:void(0)" onclick="goToState(0)">Cover</a></li>
+      <li><a href="javascript:void(0)" onclick="goToState(1)">Index</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle-btn" id="theme-btn" aria-label="Toggle light or dark theme" title="Toggle theme">
+      <div class="theme-toggle-thumb" id="theme-icon">🌙</div>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="hero">
+  <div class="hero-ambient">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Original Cinematic Literature</div>
+    <h1 class="hero-brand">
+      <span class="scri">scri</span><span class="pt-box">PT<span class="pt-glow-line"></span></span>
+    </h1>
+    <p class="hero-subtitle">
+      Step inside an interactive living diary where literature meets cinematic storytelling.
+    </p>
+    <div class="hero-author-tag">
+      Created by <span class="author-p">P</span>avan <span class="author-t">T</span>eja
+    </div>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="openBookFromHero()">
+        <span>Open the Diary</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+      </button>
+      <button class="btn-secondary" onclick="openTrailerModal('channel')">
+        <span>Watch Trailers</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="hero-scroll-cue" onclick="openBookFromHero()">
+    <div class="scroll-indicator-bar"></div>
+    <span>Scroll to open the diary</span>
+  </div>
+</section>
+
+<!-- INTERACTIVE DIARY SECTION -->
+<section class="book-section" id="book" aria-label="Interactive Diary Experience">
+  <div class="book-sticky-stage">
+
+    <!-- Per-novel themed background layers (built by JS) -->
+    <div class="stage-bg" id="stage-bg"></div>
+
+    <!-- HUD -->
+    <div class="stage-hud">
+      <div class="stage-title" id="hud-title-badge">CLOSED DIARY // COVER</div>
+      <div class="stage-counter">
+        <span id="hud-page-indicator"><strong>COVER</strong></span>
+      </div>
+    </div>
+
+    <!-- 3D VIEWPORT -->
+    <div class="book-viewport">
+      <button class="book-arrow-btn prev-btn" id="btn-prev-page" aria-label="Previous Page" onclick="stepBook(-1)">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+      <button class="book-arrow-btn next-btn" id="btn-next-page" aria-label="Next Page" onclick="stepBook(1)">
+        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+
+      <!-- THE DIARY -->
+      <div class="the-book is-closed" id="the-book">
+        <div class="leather-shell"></div>
+        <div class="book-ribbon"></div>
+
+        <div class="spread-base-grid">
+          <div class="edge-stack edge-stack-l"></div>
+          <div class="edge-stack edge-stack-r"></div>
+          <div class="page-slot page-slot-l" id="left-slot"></div>
+          <div class="page-slot page-slot-r" id="right-slot"></div>
+        </div>
+
+        <div class="book-spine-ridge"></div>
+        <div class="spiral"></div>
+
+        <!-- THE FLIPPING LEAF -->
+        <div class="flipping-leaf" id="the-leaf">
+          <div class="leaf-face leaf-face-front">
+            <div class="leaf-shadow" id="shadow-front"></div>
+            <div id="leaf-front-inner" style="width:100%; height:100%;"></div>
+          </div>
+          <div class="leaf-face leaf-face-back">
+            <div class="leaf-shadow" id="shadow-back"></div>
+            <div id="leaf-back-inner" style="width:100%; height:100%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM TABS -->
+    <div class="book-tabs-ribbon" id="bookmark-tabs-bar"></div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-eyebrow">Connect &amp; Collaborate</div>
+    <h2 class="contact-title">Let's <span class="pt">connect</span></h2>
+    <p class="contact-desc">
+      Have a question about a novel, interested in screen adaptation rights, or simply wish to share your thoughts on the story?
+    </p>
+    <div class="contact-links-grid">
+      <a class="contact-card-btn" href="https://store.pothi.com/pavan-teja" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm1 14.93V15h-2v1.93A8.001 8.001 0 014.07 13H6v-2H4.07A8.001 8.001 0 0111 4.07V6h2V4.07A8.001 8.001 0 0119.93 11H18v2h1.93A8.001 8.001 0 0113 16.93z"/></svg>
+        <span>Pothi Bookstore</span>
+      </a>
+      <a class="contact-card-btn" href="https://www.youtube.com/@pavanntej" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
+        <span>YouTube Channel</span>
+      </a>
+      <a class="contact-card-btn" href="mailto:pavanteja@example.com">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>Email Author</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">scri<span class="pt">PT</span> &mdash; Pavan Teja</div>
+  <div class="footer-note">&copy; 2026 Arasada Pavan Teja. All stories &amp; artwork reserved.</div>
+</footer>
+
+<!-- TRAILER VIDEO MODAL -->
+<div class="video-modal-backdrop" id="video-modal" onclick="closeTrailerModal(event)">
+  <div class="video-modal-container" onclick="event.stopPropagation()">
+    <button class="modal-close-btn" onclick="closeTrailerModal()" aria-label="Close modal">
+      <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+    <div class="modal-video-wrapper" id="modal-video-content">
+      <!-- Injected dynamically -->
+    </div>
+    <div class="modal-footer-bar">
+      <div class="modal-footer-meta">
+        <h4 id="modal-title">Book Trailer</h4>
+        <p id="modal-genre">Cinematic Novel Preview</p>
+      </div>
+      <div class="modal-footer-actions">
+        <a id="modal-yt-btn" class="btn-primary" href="https://www.youtube.com/@pavanntej" target="_blank" rel="noopener" style="padding:10px 18px; font-size:0.75rem;">
+          <span>Watch on YouTube</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   DATA: AUTHOR & 8 NOVELS
+   ============================================================ */
+const authorInfo = {
+  name: "Arasada Pavan Teja",
+  role: "Telugu Novelist & Storyteller",
+  portrait: "./images/pavan.jpg",
+  bio: "Arasada Pavan Teja is an independent author and creator known for blending heartfelt storytelling with cinematic visual world-building across romance, sci-fi, horror, and human drama.",
+  stats: [
+    { val: "8", lbl: "Novels" },
+    { val: "6+", lbl: "Genres" },
+    { val: "∞", lbl: "Stories" }
+  ]
+};
+
+const novels = [
+  /* 1: INDEX */
+  {
+    id: 1,
+    title: "Index",
+    chapter: "CHAPTER 01 // ROMANCE",
+    tabLabel: "01 Index",
+    genre: "Contemporary Romance",
+    logo: "./images/logo/index.png",
+    poster: "./images/poster/indexls.jpg",
+    cover: "./images/card/indexfc.jpg",
+    desc: "A young man’s simple tea-stall encounter turns into a deep, complicated love story where devotion, misunderstandings, and fate challenge what it truly means to love someone selflessly and obsessively.",
+    quote: "“Some love stories are not meant to have conclusions; they are meant to be an eternal Index.”",
+    colorUrl: "https://store.pothi.com/book/arasada-pavan-teja-miraz-0/",
+    bwUrl: "https://store.pothi.com/book/arasada-pavan-teja-index/",
+    cast: ["./images/cast/index/as.jpg", "./images/cast/index/cm.jpg", "./images/cast/index/dr.jpg", "./images/cast/index/rt.jpg"]
+  },
+  /* 2: NAINA */
+  {
+    id: 2,
+    title: "Naina",
+    chapter: "CHAPTER 02 // DRAMA",
+    tabLabel: "02 Naina",
+    genre: "Romantic Family Drama",
+    logo: "./images/logo/Naina.png",
+    poster: "./images/poster/naina.png",
+    cover: "./images/card/naina.jpg",
+    desc: "An emotional journey exploring love, loss, and destiny, where the lives of Ajju and Anju, separated by a past mistake at a railway station, are unexpectedly reunited years later through the innocent connection of a child named Naina.",
+    quote: "“Destiny doesn’t make mistakes; it only takes the longest route to heal.”",
+    colorUrl: "https://store.pothi.com/book/arasada-pavan-teja-naina/",
+    bwUrl: "https://store.pothi.com/book/arasada-pavan-teja-naina-0/",
+    cast: ["./images/cast/naina/dhanyaa.jpg", "./images/cast/naina/naina.jpg", "./images/cast/naina/sai.jpg", "./images/cast/naina/srujana.jpg"]
+  },
+  /* 3: MIRAZ */
+  {
+    id: 3,
+    title: "Miraz",
+    chapter: "CHAPTER 03 // TECH-THRILLER",
+    tabLabel: "03 Miraz",
+    genre: "Sci-Fi Horror / Techno Thriller",
+    logo: "./images/logo/miraz.png",
+    poster: "./images/poster/miraz.png",
+    cover: "./images/card/miraz.jpg",
+    desc: "After an insecure surgeon buys an AI mirror that displays a 'perfected' reflection of himself, he becomes entangled in a dark conspiracy involving a restless spirit and a global data-harvesting empire, ultimately teaming up with a hacker to expose the truth.",
+    quote: "“When the reflection starts thinking for itself, who is looking at whom?”",
+    colorUrl: "https://store.pothi.com/book/arasada-pavan-teja-miraz-2/",
+    bwUrl: "https://store.pothi.com/book/arasada-pavan-teja-miraz/",
+    cast: ["./images/cast/miraz/lp.jpg", "./images/cast/miraz/sc.jpg", "./images/cast/miraz/rt.jpg", "./images/cast/miraz/sm.jpg"]
+  },
+  /* 4: VYSHU */
+  {
+    id: 4,
+    title: "Vyshu",
+    chapter: "CHAPTER 04 // ROMANCE",
+    tabLabel: "04 Vyshu",
+    genre: "Romantic Drama",
+    logo: "./images/logo/vyshu.png",
+    poster: "./images/poster/vyshu.jpg",
+    cover: "./images/card/vyshu.jpg",
+    desc: "An orphan's obsessive love leads him to create a web series mirroring his real-life pursuit of an unreachable actress, blurring fiction and reality until a hidden truth nearly tears them apart.",
+    quote: "“Between reality and screen, love was the only script neither of them could fake.”",
+    colorUrl: "https://store.pothi.com/book/arasada-pavan-teja-vyshu/",
+    bwUrl: "https://store.pothi.com/book/arasada-pavan-teja-vyshu-2/",
+    cast: ["./images/cast/vyshu/krishna.jpg", "./images/cast/vyshu/vyshu.jpg"]
+  },
+  /* 5: ANONYMOUS */
+  {
+    id: 5,
+    title: "Anonymous",
+    chapter: "CHAPTER 05 // THRILLER",
+    tabLabel: "05 Anonymous",
+    genre: "Psychological Thriller",
+    logo: "./images/logo/anonymous.png",
+    poster: "./images/poster/anonymous.png",
+    cover: "./images/card/anonymous.jpg",
+    desc: "A story of love, loss, and the quiet courage it takes to rebuild after a tragic accident involving a childhood friend turned lover leaves a woman consumed by guilt and desperately searching for redemption.",
+    quote: "“Some secrets don’t stay buried in the dark; they come wearing familiar faces.”",
+    colorUrl: "https://store.pothi.com/book/arasada-pavan-teja-anonymous/",
+    bwUrl: "https://store.pothi.com/book/arasada-pavan-teja-anonymous-0/",
+    cast: []
+  },
+  /* 6: SUNGEETHA */
+  {
+    id: 6,
+    title: "Sungeetha",
+    chapter: "CHAPTER 06 // TRAGEDY",
+    tabLabel: "06 Sungeetha",
+    genre: "Romantic Tragedy",
+    logo: "./images/logo/sungeetha.png",
+    poster: "./images/poster/sungeetha.jpeg",
+    cover: "./images/card/sungeetha.jpg",
+    desc: "A young man named Surya helps Sangeetha, a mysterious princess of an interior village confined to her home, experience the freedom of the outside world through a forbidden trek that ultimately leads to both liberation and tragedy.",
+    quote: "“Freedom had a cost; love paid the price with its final breath.”",
+    colorUrl: "https://store.pothi.com/book/arasada-pavan-teja-sungeetha-0/",
+    bwUrl: "https://store.pothi.com/book/arasada-pavan-teja-sungeetha/",
+    cast: ["./images/cast/sungeetha/kk.jpg", "./images/cast/sungeetha/sg.jpg", "./images/cast/sungeetha/sh.jpg"]
+  },
+  /* 7: DAIVAM MANUSHYA ROOPENA */
+  {
+    id: 7,
+    title: "Daivam Manushya Roopena",
+    chapter: "CHAPTER 07 // CONTEMPORARY",
+    tabLabel: "07 DMR",
+    genre: "Contemporary Romance",
+    logo: "./images/logo/dmr.png",
+    poster: "./images/poster/dmrls.png",
+    cover: "./images/card/dmrc.jpg",
+    desc: "When a sudden, brutal tragedy strikes moments before their secret wedding, a quiet, introverted young man must sacrifice everything to fight against cruel destiny and an apathetic society to rebuild the shattered love story of his life.",
+    quote: "“God walks among us not in miracles, but in the people who refuse to give up on love.”",
+    colorUrl: "https://store.pothi.com/book/arasada-pavan-teja-daivan-manushya-roopena/",
+    bwUrl: "https://store.pothi.com/book/arasada-pavan-teja-daivam-manushya-roopena/",
+    cast: ["./images/cast/dmr/barghav.png", "./images/cast/dmr/krishna.png", "./images/cast/dmr/roopa.png", "./images/cast/dmr/rtm.png"]
+  },
+  /* 8: HAATHI */
+  {
+    id: 8,
+    title: "Haathi",
+    chapter: "CHAPTER 08 // SCI-FI",
+    tabLabel: "08 Haathi",
+    genre: "Sci-Fi Thriller",
+    logo: "./images/logo/haathi.png",
+    poster: "./images/poster/haathiposter.png",
+    cover: "./images/card/haathic.png",
+    desc: "A self-made scientist's experimental AI-powered prosthetic transforms an ordinary man into a superhuman savior — forcing him to confront the true cost of power, control, and what it truly means to be a hero.",
+    quote: "“When man invents power greater than his conscience, heroism becomes the heaviest burden.”",
+    colorUrl: "",
+    bwUrl: "",
+    cast: []
+  }
+];
+
+/* ============================================================
+   THEME SWITCHER
+   ============================================================ */
+const html = document.documentElement;
+const themeBtn = document.getElementById('theme-btn');
+const themeIcon = document.getElementById('theme-icon');
+
+function setTheme(theme) {
+  html.setAttribute('data-theme', theme);
+  themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+  localStorage.setItem('script-theme', theme);
+}
+themeBtn.addEventListener('click', () => {
+  const current = html.getAttribute('data-theme') || 'dark';
+  setTheme(current === 'dark' ? 'light' : 'dark');
+});
+const savedTheme = localStorage.getItem('script-theme') ||
+  (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+setTheme(savedTheme);
+
+/* NAV SCROLL EFFECT */
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* ============================================================
+   PER-NOVEL THEMES  (accent = ink colour on paper, glow = colour on dark stage)
+   ============================================================ */
+const GOLD_THEME = { accent: '#94701f', glow: '#e6c566', bg: 'th-gold' };
+const NOVEL_THEMES = [
+  { accent: '#a8601a', glow: '#ffa94d', bg: 'th-index' },
+  { accent: '#b3182c', glow: '#ff4d63', bg: 'th-naina' },
+  { accent: '#0b7a86', glow: '#3de8f5', bg: 'th-miraz' },
+  { accent: '#b3305f', glow: '#ff6fa6', bg: 'th-vyshu' },
+  { accent: '#2c6c4d', glow: '#58e0a0', bg: 'th-anonymous' },
+  { accent: '#3f7a2d', glow: '#ffc653', bg: 'th-sungeetha' },
+  { accent: '#bf5208', glow: '#ff9a2e', bg: 'th-dmr' },
+  { accent: '#1d5fc4', glow: '#4da3ff', bg: 'th-haathi' }
+];
+novels.forEach((n, i) => { n.theme = NOVEL_THEMES[i]; });
+
+/* ============================================================
+   DIARY ENGINE
+   0  = closed FRONT cover
+   1  = Welcome (left) + Index of novels (right)
+   2..9 = the 8 novels
+   10 = closed BACK cover (author information)
+   ============================================================ */
+const FIRST_NOVEL_STATE = 2;
+const LAST_NOVEL_STATE = novels.length + 1;   // 9
+const BACK_STATE = novels.length + 2;         // 10
+const TOTAL_STATES = BACK_STATE + 1;          // 11
+
+const theBook = document.getElementById('the-book');
+const theLeaf = document.getElementById('the-leaf');
+const leafFrontInner = document.getElementById('leaf-front-inner');
+const leafBackInner = document.getElementById('leaf-back-inner');
+const shadowFront = document.getElementById('shadow-front');
+const shadowBack = document.getElementById('shadow-back');
+const leftSlot = document.getElementById('left-slot');
+const rightSlot = document.getElementById('right-slot');
+const hudTitleBadge = document.getElementById('hud-title-badge');
+const hudPageIndicator = document.getElementById('hud-page-indicator');
+const bookmarkTabsBar = document.getElementById('bookmark-tabs-bar');
+const bookSection = document.getElementById('book');
+const stageBg = document.getElementById('stage-bg');
+const prevBtn = document.getElementById('btn-prev-page');
+const nextBtn = document.getElementById('btn-next-page');
+
+let currentBookState = 0;
+let isTurning = false;
+let scrollLockUntil = 0;
+let wheelLockUntil = 0;
+const mobileMQ = window.matchMedia('(max-width: 860px)');
+const isMobile = () => mobileMQ.matches;
+
+const LEAF_REST = 'translate3d(0,0,1px) rotateY(0deg)';
+const LEAF_OPEN = 'translate3d(0,0,1px) rotateY(-180deg)';
+
+const viewFor = s => s === 0 ? 'closed' : (s === BACK_STATE ? 'back' : 'open');
+function setView(v) {
+  ['closed', 'open', 'back'].forEach(x => theBook.classList.toggle('is-' + x, x === v));
+}
+function stateTheme(s) {
+  return (s >= FIRST_NOVEL_STATE && s <= LAST_NOVEL_STATE) ? novels[s - FIRST_NOVEL_STATE].theme : GOLD_THEME;
+}
+const leftFolio = s => (s - 1) * 2 + 1;
+
+function logoFail(img) {
+  const t = img.getAttribute('data-title') || '';
+  img.parentElement.innerHTML = `<span class="logo-fallback-title">${t}</span>`;
+}
+
+/* ---------- PAGE BODIES ---------- */
+function welcomeLeftBody() {
+  return `
+    <div class="wl-stamp">scriPT<br>ARCHIVE<br>★ 2026 ★</div>
+    <div class="wl-exlibris">✦ Ex Libris ✦</div>
+    <div class="wl-title">Welcome to <span>scriPT</span></div>
+    <div class="wl-by">by Pavan Teja</div>
+    <div class="wl-msg">
+      <p>Hello, dear reader!</p>
+      <p>Every page of this diary holds a story I couldn’t keep to myself — eight novels of love, loss, fear and wonder.</p>
+      <p>Turn the pages, watch the trailers, and find the one that feels like yours.</p>
+    </div>
+    <div class="wl-hint">Pick a story from the index on the right →</div>
+    <div class="wl-sign">— Pavan Teja</div>
+  `;
+}
+
+function indexRightBody() {
+  const rows = novels.map((n, i) => `
+    <div class="idx-row" style="--row:${n.theme.accent}" onclick="goToState(${i + FIRST_NOVEL_STATE})">
+      <span class="idx-num">${String(i + 1).padStart(2, '0')}</span>
+      <img class="idx-thumb" src="${n.cover}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'">
+      <span class="idx-text">
+        <div class="idx-name">${n.title}</div>
+        <div class="idx-genre">${n.genre}</div>
+      </span>
+      <span class="idx-page">p. ${String(leftFolio(i + FIRST_NOVEL_STATE)).padStart(2, '0')}</span>
+    </div>`).join('');
+  return `
+    <div class="idx-head">
+      <div class="idx-kicker">Table of Stories</div>
+      <div class="idx-title">Index</div>
+      <div class="idx-sub">Tap a title to turn straight to it</div>
+    </div>
+    <div class="idx-list">${rows}</div>
+  `;
+}
+
+function novelLeftBody(novel) {
+  const castHtml = novel.cast && novel.cast.length > 0 ? `
+    <div class="novel-cast-row">
+      <span class="cast-header-label">Characters:</span>
+      <div class="cast-avatar-group">
+        ${novel.cast.map(c => `<img class="cast-avatar-circle" src="${c}" alt="Cast" loading="lazy" decoding="async" onerror="this.style.display='none'">`).join('')}
+      </div>
+    </div>` : '';
+  const logo = novel.logo
+    ? `<div class="novel-logo-plate"><img class="novel-logo-badge" src="${novel.logo}" alt="${novel.title} logo" data-title="${novel.title}" decoding="async" onerror="logoFail(this)"></div>`
+    : `<div class="novel-logo-plate"><span class="logo-fallback-title">${novel.title}</span></div>`;
+  return `
+    <div class="novel-chapter-num">${novel.chapter}</div>
+    ${logo}
+    <div class="novel-genre-tag">${novel.genre}</div>
+    <p class="novel-full-description">${novel.desc}</p>
+    <blockquote class="novel-excerpt-quote">${novel.quote}</blockquote>
+    ${castHtml}
+  `;
+}
+
+function novelRightBody(novel) {
+  const colorBtn = novel.colorUrl
+    ? `<a class="btn-buy-link color-link" href="${novel.colorUrl}" target="_blank" rel="noopener"><span>Buy Color</span></a>`
+    : `<button class="btn-buy-link color-link disabled-btn"><span>Coming Soon</span></button>`;
+  const bwBtn = novel.bwUrl
+    ? `<a class="btn-buy-link bw-link" href="${novel.bwUrl}" target="_blank" rel="noopener"><span>Buy B&amp;W</span></a>`
+    : `<button class="btn-buy-link bw-link disabled-btn"><span>Notify Me</span></button>`;
+  return `
+    <div class="novel-right-header-bar">
+      <div class="trailer-badge-pill">Cinematic Video Trailer</div>
+      <div class="trailer-res-tag">HD 1080P</div>
+    </div>
+    <div class="novel-video-screen" onclick="openTrailerModal(${novel.id})" title="Click to watch the trailer">
+      <img class="novel-poster-img" src="${novel.poster}" alt="${novel.title} Poster" decoding="async" onerror="this.src='${novel.cover}'">
+      <div class="novel-video-vignette"></div>
+      <div class="novel-play-icon-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="novel-video-caption">▶ Watch Book Trailer</div>
+      <div class="novel-mini-stamp"><img src="${novel.cover}" alt="${novel.title} Cover" decoding="async" onerror="this.style.display='none'"></div>
+    </div>
+    <div class="novel-buy-panel">
+      <div class="buy-panel-header"><span>Official Store Editions</span><span>Verified Print</span></div>
+      <div class="buy-buttons-grid">${colorBtn}${bwBtn}</div>
+      <div class="buy-shipping-note"><span>✓ Direct via Pothi Bookstore</span><span>Express Delivery</span></div>
+    </div>
+  `;
+}
+
+/* ---------- PAGE ASSEMBLY ---------- */
+function pageLabels(s) { return s === 1 ? ['Welcome', 'Index'] : ['scriPT Archive', 'Official Edition']; }
+function sheetHtml(side, s) {
+  const th = stateTheme(s);
+  let body;
+  if (s === 1) body = side === 'L' ? welcomeLeftBody() : indexRightBody();
+  else {
+    const n = novels[s - FIRST_NOVEL_STATE];
+    body = side === 'L' ? novelLeftBody(n) : novelRightBody(n);
+  }
+  const labels = pageLabels(s);
+  const folio = String(side === 'L' ? leftFolio(s) : leftFolio(s) + 1).padStart(2, '0');
+  const cls = side === 'L' ? 'left-sheet' : 'right-sheet';
+  return `
+    <div class="page-sheet ${cls}" style="--pg-accent:${th.accent}">
+      <div class="page-inner-border"></div>
+      <div class="page-body">${body}</div>
+      <div class="page-bottom-strip"><span>${side === 'L' ? labels[0] : labels[1]}</span><span class="page-folio-num">${folio}</span></div>
+    </div>`;
+}
+
+const COVER_DECOR = `
+  <div class="cover-stitch"></div>
+  <div class="cover-foil-frame"></div>
+  <span class="cover-corner tl"></span><span class="cover-corner tr"></span>
+  <span class="cover-corner bl"></span><span class="cover-corner br"></span>`;
+
+function getCoverHtml() {
+  return `
+    <div class="closed-cover-design">
+      ${COVER_DECOR}
+      <div class="cover-band"></div>
+      <div class="cover-content">
+        <div class="cover-crest">✦ The Diary ✦</div>
+        <div class="cover-title">scriPT</div>
+        <div class="cover-rule"></div>
+        <div class="cover-by">A diary of eight stories</div>
+        <button class="cover-open-trigger-btn" onclick="stepBook(1)">
+          <span>Open the Diary</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </button>
+        <div class="cover-label"><small>This diary belongs to</small><b>Pavan Teja</b></div>
+      </div>
+    </div>`;
+}
+
+function getBackCoverHtml() {
+  return `
+    <div class="closed-cover-design back">
+      ${COVER_DECOR}
+      <div class="cover-band left"></div>
+      <div class="cover-content bc">
+        <div class="cover-crest">✦ About the Author ✦</div>
+        <div class="bc-portrait"><img src="${authorInfo.portrait}" alt="Author Pavan Teja" decoding="async" onerror="this.src='./images/p.jpeg'"></div>
+        <div class="bc-name">Pavan <span>Teja</span></div>
+        <div class="bc-role">${authorInfo.role}</div>
+        <p class="bc-bio">${authorInfo.bio}</p>
+        <div class="bc-stats">
+          ${authorInfo.stats.map(s => `<div class="bc-stat"><div class="val">${s.val}</div><div class="lbl">${s.lbl}</div></div>`).join('')}
+        </div>
+        <div class="bc-links">
+          <a href="https://store.pothi.com/pavan-teja" target="_blank" rel="noopener">Pothi Store</a>
+          <a href="https://www.youtube.com/@pavanntej" target="_blank" rel="noopener">YouTube</a>
+          <a href="mailto:pavanteja@example.com">Email</a>
+        </div>
+        <button class="cover-open-trigger-btn bc-again" onclick="goToState(0)"><span>↺ Read again</span></button>
+      </div>
+    </div>`;
+}
+
+/* ---------- THEMED BACKGROUNDS ---------- */
+[GOLD_THEME.bg, ...novels.map(n => n.theme.bg)].forEach(c => {
+  const layer = document.createElement('div');
+  layer.className = 'bg-layer ' + c;
+  layer.dataset.theme = c;
+  layer.innerHTML = '<div class="bl-1"></div><div class="bl-2"></div><div class="bl-3"></div><div class="bl-4"></div>';
+  stageBg.appendChild(layer);
+});
+const bgLayers = [...stageBg.querySelectorAll('.bg-layer')];
+function applyStageTheme(s) {
+  const th = stateTheme(s);
+  bgLayers.forEach(l => l.classList.toggle('on', l.dataset.theme === th.bg));
+  bookSection.style.setProperty('--stage-accent', th.glow);
+  bookSection.style.setProperty('--stage-glow', th.glow + '66');
+}
+
+/* ---------- TABS ---------- */
+(function initBookmarkTabs() {
+  ['Cover', 'Welcome', ...novels.map(n => n.tabLabel), 'Back Cover'].forEach((label, i) => {
+    const tab = document.createElement('button');
+    tab.className = 'tab-pill' + (i === 0 ? ' active' : '');
+    tab.textContent = label;
+    tab.onclick = () => goToState(i);
+    bookmarkTabsBar.appendChild(tab);
+  });
+})();
+const tabPills = [...bookmarkTabsBar.querySelectorAll('.tab-pill')];
+
+/* ---------- HUD ---------- */
+function updateHUD(state) {
+  currentBookState = state;
+  prevBtn.disabled = state === 0;
+  nextBtn.disabled = state === TOTAL_STATES - 1;
+  tabPills.forEach((tab, i) => tab.classList.toggle('active', i === state));
+  const at = tabPills[state];
+  if (at && !isMobile()) bookmarkTabsBar.scrollTo({ left: at.offsetLeft - bookmarkTabsBar.clientWidth / 2 + at.clientWidth / 2, behavior: 'smooth' });
+  if (state === 0) {
+    hudTitleBadge.textContent = 'CLOSED DIARY // FRONT COVER';
+    hudPageIndicator.innerHTML = '<strong>COVER</strong>';
+  } else if (state === 1) {
+    hudTitleBadge.textContent = 'OPEN DIARY // WELCOME & INDEX';
+    hudPageIndicator.innerHTML = '<strong>INDEX</strong>';
+  } else if (state === BACK_STATE) {
+    hudTitleBadge.textContent = 'BACK COVER // ABOUT THE AUTHOR';
+    hudPageIndicator.innerHTML = '<strong>AUTHOR</strong>';
+  } else {
+    const n = novels[state - FIRST_NOVEL_STATE];
+    hudTitleBadge.textContent = `${n.chapter} // ${n.title.toUpperCase()}`;
+    hudPageIndicator.innerHTML = `<strong>${String(state - 1).padStart(2, '0')}</strong> / ${String(novels.length).padStart(2, '0')}`;
+  }
+}
+
+/* ---------- LAYOUT SYNC (first render / resize) ---------- */
+function syncLayout() {
+  const s = currentBookState;
+  applyStageTheme(s);
+  setView(viewFor(s));
+  if (isMobile()) {
+    leftSlot.innerHTML = (s === 0 || s === BACK_STATE) ? '' : sheetHtml('L', s);
+    rightSlot.innerHTML = s === 0 ? getCoverHtml() : s === BACK_STATE ? getBackCoverHtml() : sheetHtml('R', s);
+    return;
+  }
+  const showS = s === 0 ? 1 : (s === BACK_STATE ? LAST_NOVEL_STATE : s);
+  leftSlot.innerHTML = sheetHtml('L', showS);
+  rightSlot.innerHTML = sheetHtml('R', showS);
+  theLeaf.style.transition = 'none';
+  if (s === 0) {
+    leafFrontInner.innerHTML = getCoverHtml();
+    leafBackInner.innerHTML = sheetHtml('L', 1);
+    theLeaf.style.display = 'block';
+    theLeaf.style.transform = LEAF_REST;
+  } else if (s === BACK_STATE) {
+    leafFrontInner.innerHTML = sheetHtml('R', LAST_NOVEL_STATE);
+    leafBackInner.innerHTML = getBackCoverHtml();
+    theLeaf.style.display = 'block';
+    theLeaf.style.transform = LEAF_OPEN;
+  } else {
+    theLeaf.style.display = 'none';
+    theLeaf.style.transform = LEAF_REST;
+  }
+  void theLeaf.offsetWidth;
+  theLeaf.style.transition = '';
+}
+syncLayout();
+updateHUD(0);
+mobileMQ.addEventListener('change', () => { if (!isTurning) syncLayout(); });
+
+/* ============================================================
+   PAGE FLIP
+   ============================================================ */
+function stepBook(delta) {
+  const target = Math.max(0, Math.min(TOTAL_STATES - 1, currentBookState + delta));
+  if (target !== currentBookState) goToState(target);
+}
+
+function pinScrollFor(state) {
+  const secTop = bookSection.offsetTop;
+  const secH = bookSection.offsetHeight - window.innerHeight;
+  return secTop + (state / (TOTAL_STATES - 1)) * secH;
+}
+
+function goToState(target) {
+  if (target === currentBookState || isTurning) return;
+
+  if (isMobile()) {
+    currentBookState = target;
+    syncLayout();
+    updateHUD(target);
+    return;
+  }
+
+  isTurning = true;
+  scrollLockUntil = Date.now() + 1200;
+  window.scrollTo({ top: pinScrollFor(target), behavior: 'smooth' });
+
+  const prev = currentBookState;
+  const forward = target > prev;
+  applyStageTheme(target);
+  const SPEED = (prev === 0 || target === 0 || prev === BACK_STATE || target === BACK_STATE) ? 780 : 560;
+  const EASE = 'cubic-bezier(0.25, 1, 0.5, 1)';
+
+  const runLeaf = (from, to, shadow, done) => {
+    theLeaf.style.display = 'block';
+    theLeaf.style.transition = 'none';
+    theLeaf.style.transform = from;
+    void theLeaf.offsetWidth;
+    requestAnimationFrame(() => {
+      theLeaf.style.transition = `transform ${SPEED}ms ${EASE}, top .85s ease, bottom .85s ease, right .85s ease`;
+      theLeaf.style.transform = to;
+      shadow.style.opacity = '0.5';
+      setTimeout(() => { shadow.style.opacity = '0'; done(); }, SPEED + 20);
+    });
+  };
+  const finish = () => {
+    updateHUD(target);
+    isTurning = false;
+    setTimeout(syncFromScroll, Math.max(0, scrollLockUntil - Date.now()) + 40);
+  };
+
+  if (forward) {
+    leafFrontInner.innerHTML = prev === 0 ? getCoverHtml() : sheetHtml('R', prev);
+    leafBackInner.innerHTML = target === BACK_STATE ? getBackCoverHtml() : sheetHtml('L', target);
+    rightSlot.innerHTML = sheetHtml('R', target === BACK_STATE ? LAST_NOVEL_STATE : target);
+    if (prev === 0) leftSlot.innerHTML = sheetHtml('L', target === BACK_STATE ? LAST_NOVEL_STATE : target);
+    setView(viewFor(target));
+    runLeaf(LEAF_REST, LEAF_OPEN, shadowFront, () => {
+      if (target !== BACK_STATE) {
+        leftSlot.innerHTML = sheetHtml('L', target);
+        theLeaf.style.display = 'none';
+        theLeaf.style.transition = 'none';
+        theLeaf.style.transform = LEAF_REST;
+      }
+      finish();
+    });
+  } else {
+    leafFrontInner.innerHTML = target === 0 ? getCoverHtml() : sheetHtml('R', target);
+    leafBackInner.innerHTML = prev === BACK_STATE ? getBackCoverHtml() : sheetHtml('L', prev);
+    if (target > 0) leftSlot.innerHTML = sheetHtml('L', target);
+    setView(viewFor(target));
+    runLeaf(LEAF_OPEN, LEAF_REST, shadowBack, () => {
+      rightSlot.innerHTML = sheetHtml('R', target === 0 ? 1 : target);
+      if (target > 0) {
+        theLeaf.style.display = 'none';
+        theLeaf.style.transition = 'none';
+      }
+      finish();
+    });
+  }
+}
+
+function openBookFromHero() {
+  if (isMobile()) bookSection.scrollIntoView({ behavior: 'smooth' });
+  goToState(1);
+  if (!isMobile()) window.scrollTo({ top: pinScrollFor(1), behavior: 'smooth' });
+}
+
+/* ---------- Scroll → page sync (short track, rAF throttled) ---------- */
+function syncFromScroll() {
+  if (isMobile() || isTurning || Date.now() < scrollLockUntil) return;
+  const secTop = bookSection.offsetTop;
+  const secH = bookSection.offsetHeight - window.innerHeight;
+  const y = window.scrollY;
+  if (y < secTop - 2 || y > secTop + secH + 2) return;
+  const p = Math.max(0, Math.min(1, (y - secTop) / secH));
+  const t = Math.round(p * (TOTAL_STATES - 1));
+  if (t !== currentBookState) goToState(t);
+}
+let scrollTick = false;
+window.addEventListener('scroll', () => {
+  if (scrollTick) return;
+  scrollTick = true;
+  requestAnimationFrame(() => { scrollTick = false; syncFromScroll(); });
+}, { passive: true });
+
+/* ---------- Wheel: one notch = one page while the diary is pinned ---------- */
+window.addEventListener('wheel', (e) => {
+  if (isMobile() || document.body.style.overflow === 'hidden' || Math.abs(e.deltaY) < 3) return;
+  const r = bookSection.getBoundingClientRect();
+  if (!(r.top <= 2 && r.bottom >= window.innerHeight - 2)) return;       // not pinned
+  const dir = e.deltaY > 0 ? 1 : -1;
+  if ((dir > 0 && currentBookState === TOTAL_STATES - 1) || (dir < 0 && currentBookState === 0)) return; // let the page scroll on
+  e.preventDefault();
+  const now = Date.now();
+  if (isTurning || now < wheelLockUntil) return;
+  wheelLockUntil = now + 380;
+  stepBook(dir);
+}, { passive: false });
+
+/* Keyboard */
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') stepBook(1);
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') stepBook(-1);
+});
+
+/* Touch swipe */
+let touchStartX = 0;
+theBook.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+theBook.addEventListener('touchend', (e) => {
+  const d = e.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(d) > 50) stepBook(d < 0 ? 1 : -1);
+}, { passive: true });
+
+/* Pause decorative animations while off-screen */
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('offscreen', !e.isIntersecting)), { rootMargin: '80px' });
+  io.observe(bookSection);
+  io.observe(document.getElementById('hero'));
+}
+
+/* ============================================================
+   TRAILER MODAL CONTROLS
+   ============================================================ */
+const modal = document.getElementById('video-modal');
+const modalVideoWrapper = document.getElementById('modal-video-content');
+const modalTitle = document.getElementById('modal-title');
+const modalGenre = document.getElementById('modal-genre');
+const modalYtBtn = document.getElementById('modal-yt-btn');
+
+function openTrailerModal(novelId) {
+  if (novelId === 'channel') {
+    modalTitle.textContent = "Pavan Teja — Cinematic Novels";
+    modalGenre.textContent = "Official YouTube Channel Trailers";
+    modalYtBtn.href = "https://www.youtube.com/@pavanntej";
+    modalVideoWrapper.innerHTML = `
+      <div style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:30px; background:#0c0a08;">
+        <h3 style="font-family:var(--serif); font-size:1.8rem; color:var(--gold); margin-bottom:12px;">Watch Official Trailers</h3>
+        <p style="color:var(--text-dim); max-width:480px; margin-bottom:24px; line-height:1.6;">
+          Experience full-scale cinematic book trailers with original visuals and music for all 8 novels on the official YouTube channel.
+        </p>
+        <a class="btn-primary" href="https://www.youtube.com/@pavanntej" target="_blank" rel="noopener">
+          <span>Go to @pavanntej on YouTube</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
+        </a>
+      </div>
+    `;
+  } else {
+    const novel = novels.find(n => n.id === novelId);
+    if (!novel) return;
+
+    modalTitle.textContent = `${novel.title} — Official Book Trailer`;
+    modalGenre.textContent = `${novel.genre} • Pavan Teja`;
+    modalYtBtn.href = "https://www.youtube.com/@pavanntej";
+
+    modalVideoWrapper.innerHTML = `
+      <div style="position:relative; width:100%; height:100%; overflow:hidden;">
+        <img src="${novel.poster}" alt="${novel.title} Poster" style="width:100%; height:100%; object-fit:cover; filter:brightness(0.7);">
+        <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; background:rgba(0,0,0,0.5);">
+          <div style="width:68px; height:68px; border-radius:50%; background:var(--gold); color:#000; display:flex; align-items:center; justify-content:center; margin-bottom:16px; box-shadow:0 0 30px var(--gold-glow); cursor:pointer;" onclick="window.open('https://www.youtube.com/@pavanntej', '_blank')">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <h3 style="font-family:var(--serif); font-size:1.9rem; color:#fff; margin-bottom:8px;">${novel.title}</h3>
+          <p style="color:var(--gold); font-size:0.85rem; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:18px;">Click to Play Full Cinematic Trailer on YouTube</p>
+          <a class="btn-primary" href="https://www.youtube.com/@pavanntej" target="_blank" rel="noopener">
+            <span>Watch Trailer on YouTube</span>
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTrailerModal(e) {
+  if (!e || e.target === modal || e.currentTarget.classList.contains('modal-close-btn')) {
+    modal.classList.remove('open');
+    modalVideoWrapper.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+}
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.classList.contains('open')) {
+    closeTrailerModal();
+  }
+});
+</script>
+</body>
+</html>

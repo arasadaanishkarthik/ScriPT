@@ -52,8 +52,8 @@ nav.scrolled{background:var(--nav-bg);border-color:var(--border)}
 .scroll-bar{width:1px;height:34px;background:linear-gradient(var(--gold),transparent)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
-/* BOOK STAGE (FIX: +70vh end-hold so the back cover stays pinned before the page moves on) */
-.book-section{position:relative;height:calc(100vh + 10*50vh + 70vh);background:var(--bg-desk)}
+/* BOOK STAGE */
+.book-section{position:relative;height:calc(100vh + 10*50vh);background:var(--bg-desk)}
 .book-sticky-stage{position:sticky;top:0;width:100%;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding:75px 20px 24px;contain:paint}
 .book-sticky-stage::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none}
 .book-sticky-stage.themed::before{background:linear-gradient(90deg,color-mix(in srgb,var(--vignette) 90%,transparent),color-mix(in srgb,var(--vignette) 45%,transparent) 48%,color-mix(in srgb,var(--t2) 72%,transparent)),linear-gradient(180deg,rgba(255,255,255,.04),rgba(0,0,0,.34)),var(--bg-image) center 28%/cover no-repeat;filter:saturate(1.18) contrast(1.07) brightness(1.16);animation:stageIn .9s ease}
@@ -102,8 +102,8 @@ nav.scrolled{background:var(--nav-bg);border-color:var(--border)}
 .page-bottom-strip{display:flex;justify-content:space-between;align-items:center;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--border);padding-top:8px;margin-top:auto}
 .page-folio-num{font-family:var(--serif);font-size:.85rem;color:var(--gold)}
 
-/* FLIPPING LEAF (FIX: will-change promotes it to its own GPU layer) */
-.flipping-leaf{position:absolute;top:10px;bottom:10px;left:50%;width:calc(50% - 8px);z-index:50;transform-style:preserve-3d;transform-origin:0 50%;will-change:transform}
+/* FLIPPING LEAF */
+.flipping-leaf{position:absolute;top:10px;bottom:10px;left:50%;width:calc(50% - 8px);z-index:50;transform-style:preserve-3d;transform-origin:0 50%}
 .leaf-paper{width:100%;height:100%;background:var(--pg-l)}
 .leaf-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
 .leaf-face-front{border-radius:0 6px 6px 0}.leaf-face-back{transform:rotateY(-180deg);border-radius:6px 0 0 6px}
@@ -163,9 +163,6 @@ nav.scrolled{background:var(--nav-bg);border-color:var(--border)}
 .video .cap{position:absolute;bottom:8px;left:10px;font-size:.7rem;letter-spacing:.1em;color:#fff;text-shadow:0 1px 4px #000}
 .video .stamp{position:absolute;bottom:8px;right:10px;width:32px;aspect-ratio:2/3;border-radius:2px;overflow:hidden;border:1px solid rgba(255,255,255,.4)}
 .video .stamp img{width:100%;height:100%;object-fit:cover}
-/* FIX: inline player inside the book */
-.video.playing{cursor:default}
-.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:5;background:#000}
 .buy-panel{background:rgba(201,168,76,.05);border:1px solid var(--border);border-radius:4px;padding:12px 14px;margin-bottom:10px}
 .buy-head{display:flex;justify-content:space-between;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px}
 .buy-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -209,7 +206,7 @@ footer{border-top:1px solid var(--border);padding:30px clamp(20px,5vw,64px);disp
 
 /* MOBILE: one page at a time */
 @media(max-width:860px){
-.book-section{height:calc(100dvh + 20*38vh + 70vh)}
+.book-section{height:calc(100dvh + 20*38vh)}
 .book-sticky-stage{height:100dvh;padding:108px 4vw 0;justify-content:flex-start}
 .stage-hud{top:74px}.stage-title{font-size:.6rem;letter-spacing:.14em}
 .book-viewport{max-width:460px;perspective:1700px;touch-action:pan-y;height:calc(100dvh - 230px);min-height:360px;max-height:700px}
@@ -448,7 +445,7 @@ function rightHtml(n){
   const b = n.bwUrl ? `<a class="buy b" href="${n.bwUrl}" target="_blank" rel="noopener">Buy B&amp;W</a>` : `<span class="buy b off">Notify Me</span>`;
   return `
     <div class="right-bar"><span>▶ Cinematic Video Trailer</span><span>HD 1080P</span></div>
-    <div class="video" onclick="playInline(this,${n.id})" title="Play Trailer">
+    <div class="video" onclick="openTrailerModal(${n.id})" title="Watch Trailer">
       <img class="poster" src="${n.poster}" alt="${n.title} Poster" onerror="this.src='${n.cover}'"><div class="vig"></div>
       <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="cap">▶ Watch Book Trailer</div>
@@ -507,7 +504,7 @@ function renderMobileBase(m){ const {n,left}=mPage(m); rightInfo.innerHTML=left?
 function initBook(){
   const mobile=mqMobile.matches;
   theBook.classList.remove('is-open','is-backclosed','turning'); theBook.classList.add('is-closed');
-  currentBookState=0; wantedState=0; isTurning=false; scrollLocked=false; scrollDriven=false;
+  currentBookState=0; wantedState=0; isTurning=false; scrollLocked=false;
   totalStates = novels.length+2;
   leafMode=''; ensureCoverLeaf();
   if(mobile){
@@ -554,15 +551,11 @@ const TURN_MS=620;
 function runTurn(forward,done){
   theLeaf.style.display='block'; theBook.classList.add('turning');
   const frames = forward ? [{transform:'rotateY(0deg)'},{transform:'rotateY(-180deg)'}] : [{transform:'rotateY(-180deg)'},{transform:'rotateY(0deg)'}];
-  /* FIX: faster flips when several pages are queued (fast scrolling) */
-  const queued = Math.abs(wantedState-currentBookState)>1;
-  const anim = theLeaf.animate(frames,{duration:reduceMotion.matches?1:(queued?360:TURN_MS),easing:'cubic-bezier(.5,.05,.25,1)',fill:'both'});
+  const anim = theLeaf.animate(frames,{duration:reduceMotion.matches?1:TURN_MS,easing:'cubic-bezier(.5,.05,.25,1)',fill:'both'});
   anim.finished.then(()=>{ theLeaf.style.transform=forward?'rotateY(-180deg)':'rotateY(0deg)'; anim.cancel(); theBook.classList.remove('turning'); done(); })
    .catch(()=>{ theBook.classList.remove('turning'); isTurning=false; });
 }
-/* FIX: while scrolling, move ONE page at a time toward the wanted page (no skipping) */
-function finishTurn(state){ updateHUD(state); isTurning=false;
-  if(wantedState!==state) applyState(scrollDriven ? state+Math.sign(wantedState-state) : wantedState); }
+function finishTurn(state){ updateHUD(state); isTurning=false; if(wantedState!==state) applyState(wantedState); }
 
 function applyState(target){
   applyBg(target);
@@ -712,14 +705,13 @@ function applyStateMobile(target){
 }
 
 /* ===== SCROLL-DRIVEN TURNING ===== */
-/* FIX: HOLD = extra pinned scroll after the last state so the back cover is actually seen */
-const bookSec=$('book'); let secTop=0, secH=1, HOLD=0, scrollDriven=false;
-function measureBook(){ secTop=bookSec.offsetTop; HOLD=innerHeight*.7; secH=Math.max(1,bookSec.offsetHeight-innerHeight-HOLD); }
+const bookSec=$('book'); let secTop=0, secH=1;
+function measureBook(){ secTop=bookSec.offsetTop; secH=Math.max(1,bookSec.offsetHeight-innerHeight); }
 measureBook(); addEventListener('resize',measureBook,{passive:true}); addEventListener('load',measureBook);
 
 function scrollToState(target){
   const y=secTop+(target/(totalStates-1))*secH;
-  const inside=scrollY>=secTop-4 && scrollY<=secTop+secH+HOLD+4;
+  const inside=scrollY>=secTop-4 && scrollY<=secTop+secH+4;
   if(inside){ scrollTo({top:y,behavior:'instant'}); return false; }
   scrollLocked=true; let released=false;
   const release=()=>{ if(released) return; released=true; scrollLocked=false; if(!isTurning && wantedState!==currentBookState) applyState(wantedState); };
@@ -727,7 +719,7 @@ function scrollToState(target){
   scrollTo({top:y,behavior:'smooth'}); return true;
 }
 function goToState(target){
-  target=Math.max(0,Math.min(totalStates-1,target)); wantedState=target; scrollDriven=false;
+  target=Math.max(0,Math.min(totalStates-1,target)); wantedState=target;
   const deferred=scrollToState(target);
   if(!deferred && !isTurning && target!==currentBookState) applyState(target);
 }
@@ -736,12 +728,9 @@ function stepBook(d){ goToState(wantedState+d); }
 let ticking=false;
 function onScroll(){
   ticking=false; if(scrollLocked) return;
-  const y=scrollY; if(y<secTop-1||y>secTop+secH+HOLD+1) return;
+  const y=scrollY; if(y<secTop-1||y>secTop+secH+1) return;
   const t=Math.round(Math.max(0,Math.min(1,(y-secTop)/secH))*(totalStates-1));
-  if(t!==wantedState){
-    wantedState=t; scrollDriven=true;
-    if(!isTurning && t!==currentBookState) applyState(currentBookState+Math.sign(t-currentBookState));
-  }
+  if(t!==wantedState){ wantedState=t; if(!isTurning) applyState(t); }
 }
 addEventListener('scroll',()=>{ if(!ticking){ticking=true; requestAnimationFrame(onScroll)} },{passive:true});
 mqMobile.addEventListener('change',()=>{ measureBook(); stage.dataset.k=''; initBook(); });
@@ -752,23 +741,13 @@ const modal=$('video-modal');
 addEventListener('keydown',e=>{
   if(e.key==='Escape' && modal.classList.contains('open')) return closeTrailerModal();
   if(modal.classList.contains('open')) return;
-  if(scrollY<secTop-innerHeight*.5 || scrollY>secTop+secH+HOLD+innerHeight*.5) return;
+  if(scrollY<secTop-innerHeight*.5 || scrollY>secTop+secH+innerHeight*.5) return;
   if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault(); stepBook(1)}
   else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault(); stepBook(-1)}
 });
 let touchX=0;
 theBook.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].screenX},{passive:true});
 theBook.addEventListener('touchend',e=>{const d=e.changedTouches[0].screenX-touchX; if(Math.abs(d)>50) stepBook(d<0?1:-1)},{passive:true});
-
-/* ===== INLINE TRAILER (plays inside the book) ===== */
-function playInline(el,id){
-  if(el.classList.contains('playing')) return;
-  const n=novels.find(x=>x.id===id); if(!n) return;
-  el.classList.add('playing');
-  el.innerHTML = n.trailerId
-    ? `<iframe src="https://www.youtube-nocookie.com/embed/${n.trailerId}?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="${n.title} Official Book Trailer" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`
-    : `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#0c0a08;color:var(--gold);font-family:var(--serif);font-size:1.1rem">Trailer coming soon</div>`;
-}
 
 /* ===== TRAILER MODAL ===== */
 const YT='https://www.youtube.com/@pavanntej';
